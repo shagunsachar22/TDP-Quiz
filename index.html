@@ -288,7 +288,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <p class="eyebrow" style="margin-bottom:20px">The Deliberate Pause</p>
   <h1 class="intro-title">Cancel<br>the <em>noise.</em></h1>
-  <p class="intro-sub">Every founder runs a mental noise pattern. 11 questions to name yours — and find the song that cancels it.</p>
+  <p class="intro-sub">Every high performer runs a mental noise pattern. 11 questions to name yours — and find the song that cancels it.</p>
   <p class="intro-meta">11 questions &nbsp;·&nbsp; 16 fears &nbsp;·&nbsp; 1 anthem</p>
   <button class="btn-primary" onclick="startQuiz()">Find my signal →</button>
 </div>
@@ -519,11 +519,11 @@ const QUESTIONS = [
   },
   {
     dim:'Harmony', dimId:'nd-harmony', color:'var(--noise-orange)', type:'choice',
-    text:'A respected investor passes on your round without much explanation. Your first, unfiltered reaction is…',
+    text:'Someone whose opinion matters rejects something you put real effort into. Your first, unfiltered reaction is…',
     opts:[
-      {l:'A',t:'"I must have missed something. I should have been more prepared."',v:'achiever'},
+      {l:'A',t:'"I must have missed something. I should have done better."',v:'achiever'},
       {l:'B',t:'"They didn\'t really get what we\'re building. Not the right fit anyway."',v:'helper'},
-      {l:'C',t:'"What does this mean for the team? I need to make sure everyone\'s okay."',v:'loyalist'},
+      {l:'C',t:'"What does this mean for the people around me? I need to make sure everyone\'s okay."',v:'loyalist'},
       {l:'D',t:'"I knew I wasn\'t ready for this. Maybe they\'re right."',v:'investigator'}
     ]
   },
@@ -533,7 +533,7 @@ const QUESTIONS = [
     opts:[
       {l:'A',t:'I hold myself — and sometimes others — to a standard almost nothing can meet.',v:'reformer'},
       {l:'B',t:'I\'ve been chasing something just out of reach for so long I\'ve forgotten what stillness feels like.',v:'enthusiast'},
-      {l:'C',t:'I take up a lot of space and sometimes I\'m not sure the people around me feel safe saying so.',v:'challenger'},
+      {l:'C',t:'I take up a lot of space and sometimes I\'m not sure the people around me feel safe pushing back.',v:'challenger'},
       {l:'D',t:'I feel most alive when I\'m doing something no one else is doing — but I worry about being seen as difficult.',v:'individualist'}
     ]
   },
@@ -569,9 +569,9 @@ const QUESTIONS = [
   },
   {
     dim:'Melody', dimId:'nd-melody', color:'var(--noise-yellow)', type:'choice',
-    text:'There\'s something you\'ve been meaning to do for yourself — not for the company, not for anyone else. When you think about it honestly, why hasn\'t it happened?',
+    text:'There\'s something you\'ve been meaning to do for yourself — not for work, not for anyone else. When you think about it honestly, why hasn\'t it happened?',
     opts:[
-      {l:'A',t:'There genuinely hasn\'t been time. The company needs me right now.',v:'motion'},
+      {l:'A',t:'There genuinely hasn\'t been time. What I\'m building needs me right now.',v:'motion'},
       {l:'B',t:'I keep waiting until things are more stable. It feels selfish to prioritise myself now.',v:'stillness'},
       {l:'C',t:'I\'m not sure I\'d know how to just do something for myself without it feeling purposeless.',v:'stillness'},
       {l:'D',t:'I\'ve started a few times, but something always comes up that feels more urgent.',v:'motion'}
@@ -579,10 +579,10 @@ const QUESTIONS = [
   },
   {
     dim:'Melody', dimId:'nd-melody', color:'var(--noise-yellow)', type:'choice',
-    text:'The company is going through a genuinely hard stretch. Behind closed doors, the version of you that shows up is…',
+    text:'You\'re going through a genuinely hard stretch — pressure from every direction. Behind closed doors, the version of you that shows up is…',
     opts:[
-      {l:'A',t:'The one who works harder. More hours, more output, more control over the variables.',v:'motion'},
-      {l:'B',t:'The one who holds everyone else together — even when you\'re not okay yourself.',v:'motion'},
+      {l:'A',t:'The one who works harder. More hours, more output, more grip on the variables.',v:'motion'},
+      {l:'B',t:'The one who holds everyone else together — even when you\'re running on empty yourself.',v:'motion'},
       {l:'C',t:'The one who goes quiet. You need to process alone before you can be useful to anyone.',v:'stillness'},
       {l:'D',t:'The one who starts questioning everything — strategy, timing, your own judgment.',v:'stillness'}
     ]
@@ -931,8 +931,8 @@ function logicFallbackSong(result){
 function buildFallback(r, song){
   const fearMap = {
     achiever_i:      'The gap between public success and private feeling. You perform confidence while quietly wondering if you\'re a fraud.',
-    achiever_e:      'Your worth feels dependent on what you produce. No matter what you ship, the finish line keeps moving.',
-    helper_i:        'You give endlessly to others while quietly neglecting your own needs. Worth tied to being needed.',
+    achiever_e:      'Your worth feels dependent on what you produce. No matter what you achieve, the finish line keeps moving.',
+    helper_i:        'You give endlessly to others while quietly neglecting your own needs. Your value feels tied to being useful.',
     helper_e:        'You read every room for signals of being liked. Adjusting constantly to maintain approval is exhausting to sustain.',
     reformer_i:      'The inner critic never quiets. Every decision reviewed for flaws. Privately convinced it\'s never right enough.',
     reformer_e:      'You hold yourself — and sometimes others — to a standard almost nothing can meet.',
@@ -980,7 +980,7 @@ window.onerror = function(msg, src, line, col, err){
 
 function shareResult(){
   const song=document.getElementById('ar-song').textContent;
-  const text=`My founder anthem is "${song}" — matched by The Deliberate Pause noise-cancelling quiz. What's yours?`;
+  const text=`My anthem is "${song}" — matched by The Deliberate Pause noise-cancelling quiz. What's yours?`;
   if(navigator.share){navigator.share({title:'My Founder Anthem',text,url:location.href}).catch(()=>{});}
   else if(navigator.clipboard){
     navigator.clipboard.writeText(text+'\n'+location.href);
