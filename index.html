@@ -689,6 +689,32 @@ function submitEmail(){
   const err=document.getElementById('email-err');
   if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){err.style.display='block';return;}
   err.style.display='none';
+
+  // Compute result early so we can send it with the email
+  const result=computeResult();
+
+  // Send to Make → Google Sheets
+  fetch('https://hook.eu1.make.com/w1hebfq518jgxm7mfwl5fqldb4viqqnm',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      email: v,
+      timestamp: new Date().toISOString(),
+      fear_key: result.harmony,
+      base_type: result.baseType,
+      direction: result.direction,
+      noise_label: result.coreNoise,
+      signal_label: result.coreSignal,
+      rhythm: result.rhythm,
+      melody: result.melody,
+      tone: result.tone,
+      anthem: (function(){
+        const s=logicFallbackSong(result);
+        return s ? s.song+' — '+s.artist : '';
+      })()
+    })
+  }).catch(()=>{});
+
   show('loading');
   runLoading();
 }
