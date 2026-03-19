@@ -497,94 +497,105 @@ const SIGNAL_MAP = {
 // QUESTIONS — 11 click, simplified
 // ═══════════════════════════════════════
 const QUESTIONS = [
-  {dim:'Rhythm',dimId:'nd-rhythm',color:'var(--noise-red)',type:'choice',
-   text:'Free Sunday, nothing to do. By mid-morning you…',
-   opts:[
-    {l:'A',t:'Open your laptop. You can\'t help it.',v:'fast'},
-    {l:'B',t:'Call someone. Free time is better shared.',v:'fast'},
-    {l:'C',t:'Slow down properly. Read, walk, breathe.',v:'slow'},
-    {l:'D',t:'Make a plan. Unstructured time stresses you out.',v:'slow'}
-  ]},
-  {dim:'Rhythm',dimId:'nd-rhythm',color:'var(--noise-red)',type:'choice',
-   text:'Growing up, which felt most true at home?',
-   opts:[
-    {l:'A',t:'Being busy kept you useful — or out of trouble.',v:'fast'},
-    {l:'B',t:'Things were unpredictable. You learned to read people fast.',v:'fast'},
-    {l:'C',t:'You were the reliable one. Everyone counted on you.',v:'slow'},
-    {l:'D',t:'Achievement got noticed. Effort was how love was shown.',v:'slow'}
-  ]},
-  {dim:'Harmony',dimId:'nd-harmony',color:'var(--noise-orange)',type:'choice',
-   text:'Someone you respect rejects your work. First thought?',
-   opts:[
-    {l:'A',t:'"I should have done better."',v:'achiever'},
-    {l:'B',t:'"They didn\'t understand it."',v:'helper'},
-    {l:'C',t:'"How is everyone else feeling about this?"',v:'loyalist'},
-    {l:'D',t:'"Maybe I\'m just not good enough."',v:'investigator'}
-  ]},
-  {dim:'Harmony',dimId:'nd-harmony',color:'var(--noise-orange)',type:'choice',
-   text:'Which sounds uncomfortably familiar?',
-   opts:[
-    {l:'A',t:'Nothing I do ever feels good enough.',v:'reformer'},
-    {l:'B',t:'I\'ve been chasing something so long I forgot how to stop.',v:'enthusiast'},
-    {l:'C',t:'I take up a lot of space and people don\'t always push back.',v:'challenger'},
-    {l:'D',t:'I come alive doing things no one else is doing.',v:'individualist'}
-  ]},
-  {dim:'Harmony',dimId:'nd-harmony',color:'var(--noise-orange)',type:'choice',
-   text:'When things are going well, what thought sneaks in?',
-   opts:[
-    {l:'A',t:'"How long will this last?"',v:'loyalist'},
-    {l:'B',t:'"I hope people see how hard I worked."',v:'achiever'},
-    {l:'C',t:'"There\'s probably something more exciting I could be doing."',v:'enthusiast'},
-    {l:'D',t:'"I wonder what people really think of me."',v:'helper'}
-  ]},
-  {dim:'Harmony',dimId:'nd-harmony',color:'var(--noise-orange)',type:'choice',
-   text:'When no one\'s watching, you\'re most likely…',
-   opts:[
-    {l:'A',t:'Replaying a conversation, looking for what went wrong.',v:'reformer'},
-    {l:'B',t:'Deep in research, building something in your head.',v:'investigator'},
-    {l:'C',t:'Imagining a completely different life.',v:'individualist'},
-    {l:'D',t:'Quietly making sure you\'re still in control.',v:'challenger'}
-  ]},
-  {dim:'Direction',dimId:'nd-harmony',color:'var(--noise-orange)',type:'choice',
-   text:'When fear hits, where does it go first?',
-   opts:[
-    {l:'A',t:'Inward. I go quiet and replay it alone.',v:'internal'},
-    {l:'B',t:'Outward. I act, perform, or take control.',v:'external'},
-    {l:'C',t:'Into my body. I feel it before I can name it.',v:'internal'},
-    {l:'D',t:'Into work. I just start doing something.',v:'external'}
-  ]},
-  {dim:'Melody',dimId:'nd-melody',color:'var(--noise-yellow)',type:'choice',
-   text:'Real reason you haven\'t made time for yourself lately?',
-   opts:[
-    {l:'A',t:'No time. What I\'m building needs me.',v:'motion'},
-    {l:'B',t:'Feels selfish until things settle down.',v:'stillness'},
-    {l:'C',t:'I wouldn\'t know what to do with the time.',v:'stillness'},
-    {l:'D',t:'I keep starting, but something pulls me back.',v:'motion'}
-  ]},
-  {dim:'Melody',dimId:'nd-melody',color:'var(--noise-yellow)',type:'choice',
-   text:'Hard stretch. Which version of you shows up?',
-   opts:[
-    {l:'A',t:'Works harder. More hours, more control.',v:'motion'},
-    {l:'B',t:'Holds everyone else together, even when empty.',v:'motion'},
-    {l:'C',t:'Goes quiet. Needs to process alone.',v:'stillness'},
-    {l:'D',t:'Questions everything — the plan, the timing, yourself.',v:'stillness'}
-  ]},
-  {dim:'Tone',dimId:'nd-tone',color:'var(--noise-blue)',type:'choice',
-   text:'Your team says people find you hard to read. You…',
-   opts:[
-    {l:'A',t:'Take it seriously and try to fix it.',v:'analytical'},
-    {l:'B',t:'Feel it more than expected. You care a lot.',v:'intuitive'},
-    {l:'C',t:'Analyse if it\'s actually true.',v:'analytical'},
-    {l:'D',t:'Wonder what it means about your leadership.',v:'intuitive'}
-  ]},
-  {dim:'Tone',dimId:'nd-tone',color:'var(--noise-blue)',type:'choice',
-   text:'Two books: one explains why you feel this way, one tells you what to do. Which first?',
-   opts:[
-    {l:'A',t:'The why. Understanding it IS the work.',v:'intuitive'},
-    {l:'B',t:'The what. Reflect later, move now.',v:'analytical'},
-    {l:'C',t:'The why. Can\'t act until you understand the root.',v:'intuitive'},
-    {l:'D',t:'The what. Insight without action is just entertainment.',v:'analytical'}
-  ]}
+  { dim:"Rhythm", dimId:"nd-rhythm", color:"var(--noise-red)", type:"choice",
+    text:"Your calendar just cleared for the afternoon. First instinct?",
+    opts:[
+      {l:"A",t:"Already filling it back up",v:"fast"},
+      {l:"B",t:"Calling someone to make plans",v:"fast"},
+      {l:"C",t:"Quietly relieved \u2014 finally some breathing room",v:"slow"},
+      {l:"D",t:"Making a list of what to do with it",v:"slow"},
+    ]
+  },
+  { dim:"Rhythm", dimId:"nd-rhythm", color:"var(--noise-red)", type:"choice",
+    text:"What did you get in trouble for most as a kid?",
+    opts:[
+      {l:"A",t:"Never sitting still",v:"fast"},
+      {l:"B",t:"Talking too much",v:"fast"},
+      {l:"C",t:"Being too serious / in your own world",v:"slow"},
+      {l:"D",t:"Being too particular about how things were done",v:"slow"},
+    ]
+  },
+  { dim:"Harmony", dimId:"nd-harmony", color:"var(--noise-orange)", type:"choice",
+    text:"You pour months into something. It gets a lukewarm response. You\u2026",
+    opts:[
+      {l:"A",t:"Wonder what you missed",v:"achiever"},
+      {l:"B",t:"Figure they just didn\u2019t get it",v:"helper"},
+      {l:"C",t:"Immediately worry about everyone else involved",v:"loyalist"},
+      {l:"D",t:"Spiral into whether you were ever good enough to do this",v:"investigator"},
+    ]
+  },
+  { dim:"Harmony", dimId:"nd-harmony", color:"var(--noise-orange)", type:"choice",
+    text:"Be honest. Which of these sounds most like the voice in your head on a hard day?",
+    opts:[
+      {l:"A",t:"\u201cOne wrong move and the whole thing unravels \u2014 including your reputation\u201d",v:"achiever"},
+      {l:"B",t:"\u201cAll this effort and nobody\u2019s even paying attention\u201d",v:"helper"},
+      {l:"C",t:"\u201cYou can\u2019t afford to stop. Not yet. Maybe not ever.\u201d",v:"loyalist"},
+      {l:"D",t:"\u201cThis is good. But there\u2019s probably something better you should be doing instead\u201d",v:"enthusiast"},
+    ]
+  },
+  { dim:"Harmony", dimId:"nd-harmony", color:"var(--noise-orange)", type:"choice",
+    text:"Massive win. Best week in months. The uninvited thought that shows up anyway:",
+    opts:[
+      {l:"A",t:"\u201cCool. When does the other shoe drop?\u201d",v:"loyalist"},
+      {l:"B",t:"\u201cI really hope the right people clocked that\u201d",v:"helper"},
+      {l:"C",t:"\u201cOkay but what am I definitely forgetting right now\u201d",v:"reformer"},
+      {l:"D",t:"\u201cI\u2019m already bored, what\u2019s next\u201d",v:"enthusiast"},
+    ]
+  },
+  { dim:"Harmony", dimId:"nd-harmony", color:"var(--noise-orange)", type:"choice",
+    text:"3am, can\u2019t sleep. Your brain is:",
+    opts:[
+      {l:"A",t:"Replaying a meeting from Tuesday like it\u2019s a crime scene",v:"reformer"},
+      {l:"B",t:"Doing a deep dive into something no one asked you to think about",v:"investigator"},
+      {l:"C",t:"Drafting the alternate life where you made different choices",v:"individualist"},
+      {l:"D",t:"Running threat assessments on everything that could go wrong",v:"challenger"},
+    ]
+  },
+  { dim:"Direction", dimId:"nd-harmony", color:"var(--noise-orange)", type:"choice",
+    text:"Something big just happened. Where does it land first?",
+    opts:[
+      {l:"A",t:"Somewhere in your chest \u2014 you feel it before you understand it",v:"internal"},
+      {l:"B",t:"In your head \u2014 you\u2019re already analysing before you\u2019ve felt anything",v:"external"},
+      {l:"C",t:"Nowhere visible \u2014 you go quiet and process in private",v:"internal"},
+      {l:"D",t:"In your to-do list \u2014 you immediately turn it into something to act on",v:"external"},
+    ]
+  },
+  { dim:"Melody", dimId:"nd-melody", color:"var(--noise-yellow)", type:"choice",
+    text:"First real day off in weeks. You feel:",
+    opts:[
+      {l:"A",t:"Vaguely criminal, like you\u2019re getting away with something you shouldn\u2019t",v:"motion"},
+      {l:"B",t:"Weirdly purposeless \u2014 turns out you have no hobbies anymore",v:"stillness"},
+      {l:"C",t:"Fine for about 45 minutes, then you check your phone",v:"motion"},
+      {l:"D",t:"Genuinely fine \u2014 rest is for people who aren\u2019t you",v:"motion"},
+    ]
+  },
+  { dim:"Melody", dimId:"nd-melody", color:"var(--noise-yellow)", type:"choice",
+    text:"Everything is on fire at work. The version of you that shows up is:",
+    opts:[
+      {l:"A",t:"A machine. You lock in, take control, fix everything yourself",v:"motion"},
+      {l:"B",t:"A ghost. You disappear into your head before you can be useful to anyone",v:"stillness"},
+      {l:"C",t:"A therapist for everyone else while quietly falling apart yourself",v:"motion"},
+      {l:"D",t:"A detective. You question every decision you\u2019ve ever made",v:"stillness"},
+    ]
+  },
+  { dim:"Tone", dimId:"nd-tone", color:"var(--noise-blue)", type:"choice",
+    text:"Someone gives you feedback you didn\u2019t ask for. Your body\u2019s first response:",
+    opts:[
+      {l:"A",t:"Brace \u2014 you felt it in your stomach before they finished the sentence",v:"intuitive"},
+      {l:"B",t:"Nothing \u2014 you\u2019re already cross-referencing whether it\u2019s accurate",v:"analytical"},
+      {l:"C",t:"Ownership \u2014 you\u2019re writing down what to fix before they\u2019ve finished",v:"analytical"},
+      {l:"D",t:"Spiral \u2014 you\u2019re already wondering what it means about you as a person",v:"intuitive"},
+    ]
+  },
+  { dim:"Tone", dimId:"nd-tone", color:"var(--noise-blue)", type:"choice",
+    text:"You know you\u2019ve made the right call when:",
+    opts:[
+      {l:"A",t:"Something physically releases \u2014 you just feel it",v:"intuitive"},
+      {l:"B",t:"The spreadsheet says so",v:"analytical"},
+      {l:"C",t:"You\u2019ve stress-tested it from every possible angle",v:"analytical"},
+      {l:"D",t:"Someone you respect nods and you finally breathe again",v:"intuitive"},
+    ]
+  },
 ];
 
 // ═══════════════════════════════════════
