@@ -423,13 +423,13 @@ const SONG_LIBRARY = [
 ];
 
 const BELIEFS = {
-  b1:{label:"I am not enough",noise:"Never enough",signal:"Start with what's already here",shadow:"Never satisfied, can't appreciate what's here",songs:["River","Holocene","Flaws"],release:"This song knows the exhaustion of performing worthiness. It doesn't tell you to try harder. It offers something rarer — forgiveness without a finish line."},
-  b2:{label:"I belong only when I'm useful",noise:"Conditional belonging",signal:"Fill your own cup first",shadow:"Loses self, code-switches until there's no original left",songs:["Strange Fruit","The Village","Gravity"],release:"This song holds what it costs to give endlessly while quietly disappearing. It doesn't ask you to stop caring — it asks you to notice the price."},
-  b3:{label:"I'm only valued when I produce",noise:"Worth equals output",signal:"You exist when you stop too",shadow:"Can't rest, every achievement is relief not joy",songs:["Shake It Out","When the Party's Over","Fake Plastic Trees"],release:"This song is for the one who can't stop moving because stopping feels like ceasing to exist. It doesn't celebrate the hustle. It names the cost."},
-  b4:{label:"If they see the real me, it's over",noise:"Armour over authenticity",signal:"The strength is still there without the armour",shadow:"Can't be vulnerable, paralysis by analysis under pressure",songs:["Liability","The Night We Met","Motion Picture Soundtrack"],release:"This song is about the loneliness of self-editing. Of becoming so careful about what you show that you lose track of what's actually there."},
-  b5:{label:"If I fail, it proves who I am",noise:"Failure equals identity",signal:"Get it wrong out loud. Keep going anyway.",shadow:"Can't tolerate failure, one mistake collapses identity",songs:["I Will Survive","Stubborn Love","Nina Cried Power"],release:"This song is for the moment doubt finally loses. Not because the fear went away — because you moved anyway. The defiance that only comes from having genuinely been afraid."},
-  b6:{label:"My past defines me",noise:"Carrying every previous version",signal:"Let it unfold without the full weight of before",shadow:"Can't release the past, replays endlessly, every decision weighted",songs:["The Wolves (Act I and II)","Breathe (2 AM)","Landslide"],release:"This song doesn't ask you to forget. It asks you to stop treating the past as a verdict. To sit inside the weight of it without letting it be the whole story."},
-  b7:{label:"If I can't control it, I can't survive it",noise:"Control as survival",signal:"Move with what you know. Adjust as you go.",shadow:"Analysis paralysis, can't act under uncertainty, catastrophises",songs:["Dog Days Are Over","Lost in the Light","White Flag"],release:"This song is the sound of the grip finally releasing. Not because everything is safe — because you discovered you could survive not knowing."}
+  b1:{label:"I am not enough",noise:"The voice that says it's not enough",signal:"You already are",shadow:"Never satisfied, can't appreciate what's here",songs:["River","Holocene","Flaws"],release:"This song knows the exhaustion of performing worthiness. It doesn't tell you to try harder. It offers something rarer — forgiveness without a finish line."},
+  b2:{label:"I belong only when I'm useful",noise:"Only matters when being needed",signal:"You matter when you stop too",shadow:"Loses self, code-switches until there's no original left",songs:["Strange Fruit","The Village","Gravity"],release:"This song holds what it costs to give endlessly while quietly disappearing. It doesn't ask you to stop caring — it asks you to notice the price."},
+  b3:{label:"I'm only valued when I produce",noise:"Rest feels like falling behind",signal:"Stillness is not the enemy",shadow:"Can't rest, every achievement is relief not joy",songs:["Shake It Out","When the Party's Over","Fake Plastic Trees"],release:"This song is for the one who can't stop moving because stopping feels like ceasing to exist. It doesn't celebrate the hustle. It names the cost."},
+  b4:{label:"If they see the real me, it's over",noise:"Can't let them see the real version",signal:"The real version is the strong one",shadow:"Can't be vulnerable, paralysis by analysis under pressure",songs:["Liability","The Night We Met","Motion Picture Soundtrack"],release:"This song is about the loneliness of self-editing. Of becoming so careful about what you show that you lose track of what's actually there."},
+  b5:{label:"If I fail, it proves who I am",noise:"One failure away from being found out",signal:"Failing forward is still forward",shadow:"Can't tolerate failure, one mistake collapses identity",songs:["I Will Survive","Stubborn Love","Nina Cried Power"],release:"This song is for the moment doubt finally loses. Not because the fear went away — because you moved anyway. The defiance that only comes from having genuinely been afraid."},
+  b6:{label:"My past defines me",noise:"Still carrying what already happened",signal:"The past is data, not a sentence",shadow:"Can't release the past, replays endlessly, every decision weighted",songs:["The Wolves (Act I and II)","Breathe (2 AM)","Landslide"],release:"This song doesn't ask you to forget. It asks you to stop treating the past as a verdict. To sit inside the weight of it without letting it be the whole story."},
+  b7:{label:"If I can't control it, I can't survive it",noise:"Can't move until it's certain",signal:"Clarity comes from moving, not waiting",shadow:"Analysis paralysis, can't act under uncertainty, catastrophises",songs:["Dog Days Are Over","Lost in the Light","White Flag"],release:"This song is the sound of the grip finally releasing. Not because everything is safe — because you discovered you could survive not knowing."}
 };
 
 const QUESTIONS = [
@@ -634,9 +634,63 @@ function computeResult(){
   return {beliefKey,belief,song,counts,answers};
 }
 
-function pickSong(k){
-  for(const t of BELIEFS[k].songs){const f=SONG_LIBRARY.find(s=>s.song===t);if(f)return f;}
-  return SONG_LIBRARY[0];
+function pickSong(beliefKey, answers){
+  // Expanded pool per belief — covers different emotional registers
+  const POOL = {
+    b1: {
+      high:  ["River","Holocene","Flaws","Do I Wanna Know?","Outro"],
+      low:   ["River","Lua","Holocene","Smother","Lost in the Light"]
+    },
+    b2: {
+      high:  ["Strange Fruit","Gravity","How Soon is Now?","Smother","HUMBLE."],
+      low:   ["The Village","Strange Fruit","A Change is Gonna Come","Breathe (2 AM)","Gravity"]
+    },
+    b3: {
+      high:  ["Shake It Out","Eye of the Tiger","Dog Days Are Over","Glory and Gore","Fake Plastic Trees"],
+      low:   ["When the Party's Over","Fake Plastic Trees","Skinny Love","Motion Picture Soundtrack","Landslide"]
+    },
+    b4: {
+      high:  ["Liability","Power","How Soon is Now?","Do I Wanna Know?","HUMBLE."],
+      low:   ["The Night We Met","Motion Picture Soundtrack","The Village","Holocene","Lua"]
+    },
+    b5: {
+      high:  ["I Will Survive","Glory and Gore","Nina Cried Power","Eye of the Tiger","Stubborn Love"],
+      low:   ["Stubborn Love","Breathe (2 AM)","Flaws","The Wolves (Act I and II)","A Change is Gonna Come"]
+    },
+    b6: {
+      high:  ["Landslide","A Change is Gonna Come","Nina Cried Power","Dog Days Are Over","Shake It Out"],
+      low:   ["The Wolves (Act I and II)","Breathe (2 AM)","The Night We Met","Skinny Love","Lua"]
+    },
+    b7: {
+      high:  ["Dog Days Are Over","Eye of the Tiger","White Flag","Running with the Wolves","Shake It Out"],
+      low:   ["Lost in the Light","White Flag","The Wolves (Act I and II)","Holocene","Breathe (2 AM)"]
+    }
+  };
+
+  // Derive intensity from answers:
+  // high = person picked more outward/urgent options (b3,b4,b5,b7 dominate secondary answers)
+  // low  = person picked more inward/reflective options (b1,b2,b6 dominate secondary answers)
+  const highBeliefs = new Set(['b3','b4','b5','b7']);
+  let highCount = 0, lowCount = 0;
+  if(answers && answers.length){
+    answers.forEach(a => {
+      if(highBeliefs.has(a.belief)) highCount++;
+      else lowCount++;
+    });
+  }
+  const register = highCount >= lowCount ? 'high' : 'low';
+  const pool = POOL[beliefKey]?.[register] || POOL[beliefKey]?.high || [];
+
+  // Pick deterministically based on answer fingerprint so same answers = same song
+  // but different answer patterns = different song
+  const fingerprint = answers ? answers.reduce((sum,a,i)=>{
+    const bNum = parseInt(a.belief.replace('b','')) || 1;
+    return sum + bNum * (i+1);
+  }, 0) : 0;
+
+  const idx = fingerprint % pool.length;
+  const songTitle = pool[idx];
+  return SONG_LIBRARY.find(s=>s.song===songTitle) || SONG_LIBRARY[0];
 }
 
 async function callAPI(result){
@@ -649,7 +703,7 @@ async function callAPI(result){
   const prompt='You are matching a high performer to their anthem. Their primary limiting belief is: '+result.belief.label+'. Noise: '+result.belief.noise+'. Signal: '+result.belief.signal+'. Their 7 answers: '+clickSummary+'. SONG LIBRARY ('+SONG_LIBRARY.length+' songs): '+libraryContext+'. Pick the single best song for this specific person. Then write exactly 3 short paragraphs (150-180 words total). Para 1: what you see in them based on their answers, warm not clinical. Para 2: the belief underneath was a strength once, name what it cost to develop it. Para 3: why this specific song releases that belief, what to listen for. Respond in EXACTLY this format with no other text: SONG_INDEX: [number 0-'+(SONG_LIBRARY.length-1)+'] NARRATIVE: [3 paragraphs separated by double newline]. Rules: second person, no headers, pure prose, positive framing, no word journey.';
 
   try{
-    const res=await fetch("https://api.anthropic.com/v1/messages",{
+    const res=await fetch("/api/claude",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,messages:[{role:"user",content:prompt}]})
@@ -671,7 +725,7 @@ async function callAPI(result){
     }
     // fallback: use belief songs if parse fails but we got narrative
     if(!narrativeResult&&narrativeMatch){
-      narrativeResult={song:pickSong(result.beliefKey),narrative:narrativeMatch[1].trim()};
+      narrativeResult={song:pickSong(result.beliefKey,result.answers),narrative:narrativeMatch[1].trim()};
     }
   }catch(e){narrativeResult=null;}
 }
@@ -679,7 +733,7 @@ async function callAPI(result){
 function populateResult(result){
   const belief=result.belief;
   // Use API-selected song if available, otherwise logic fallback
-  const song=(narrativeResult&&narrativeResult.song)?narrativeResult.song:pickSong(result.beliefKey);
+  const song=(narrativeResult&&narrativeResult.song)?narrativeResult.song:pickSong(result.beliefKey,result.answers);
 
   document.getElementById('res-noise-val').textContent=belief.noise;
   document.getElementById('res-signal-val').textContent=belief.signal;
