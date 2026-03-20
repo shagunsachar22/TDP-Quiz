@@ -582,11 +582,32 @@ function submitEmail(){
   if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){err.style.display='block';return;}
   err.style.display='none';
   const result=computeResult();
+
+  // Webhook payload — all fields present at this point
+  const payload={
+    email: v,
+    timestamp: new Date().toISOString(),
+    belief_key: result.beliefKey,
+    belief_label: result.belief.label,
+    noise: result.belief.noise,
+    signal: result.belief.signal,
+    anthem: result.song.song+' by '+result.song.artist
+  };
+
   fetch('https://hook.eu1.make.com/w1hebfq518jgxm7mfwl5fqldb4viqqnm',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:v,timestamp:new Date().toISOString(),belief_key:result.beliefKey,belief_label:result.belief.label,noise:result.belief.noise,signal:result.belief.signal,anthem:result.song.song+' — '+result.song.artist})
-  }).catch(()=>{});
-  show('loading');runLoading(result);
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(function(r){
+    console.log('Webhook status:', r.status, r.statusText);
+    return r.text();
+  })
+  .then(function(t){ console.log('Webhook response:', t); })
+  .catch(function(e){ console.error('Webhook error:', e); });
+
+  show('loading');
+  runLoading(result);
 }
 
 function runLoading(result){
