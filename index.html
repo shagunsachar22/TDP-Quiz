@@ -63,18 +63,18 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .scenario-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--amber);opacity:0.5;margin-bottom:12px;}
 
 /* question */
-.q-text{font-family:'Playfair Display',serif;font-size:clamp(20px,3.8vw,30px);font-weight:700;line-height:1.3;color:var(--cream);margin-bottom:30px;letter-spacing:-0.01em;}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,26px);font-weight:700;line-height:1.3;color:var(--cream);margin-bottom:22px;letter-spacing:-0.01em;}
 .q-wrap{animation:fadeUp 0.4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
 /* options */
-.options{display:grid;gap:10px;}
-.opt{background:rgba(240,235,224,0.025);border:1px solid var(--border);padding:18px 22px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:all 0.18s;color:var(--cream);text-align:left;width:100%;position:relative;overflow:hidden;}
+.options{display:grid;gap:8px;}
+.opt{background:rgba(240,235,224,0.025);border:1px solid var(--border);padding:14px 20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:all 0.18s;color:var(--cream);text-align:left;width:100%;position:relative;overflow:hidden;}
 .opt:hover{background:rgba(212,144,47,0.06);border-color:rgba(212,144,47,0.3);transform:translateX(3px);}
 .opt.selected{background:rgba(212,144,47,0.1);border-color:var(--amber);}
 .opt-letter{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);opacity:0.5;flex-shrink:0;margin-top:3px;}
 .opt.selected .opt-letter{opacity:1;}
-.opt-text{font-size:16px;line-height:1.55;opacity:0.75;font-weight:300;}
+.opt-text{font-size:15px;line-height:1.5;opacity:0.75;font-weight:300;}
 .opt.selected .opt-text{opacity:1;}
 .opt-ripple{position:absolute;border-radius:50%;background:rgba(212,144,47,0.12);transform:scale(0);pointer-events:none;animation:rpl 0.5s ease-out forwards;}
 @keyframes rpl{to{transform:scale(8);opacity:0;}}
@@ -433,47 +433,68 @@ const BELIEFS = {
 };
 
 const QUESTIONS = [
-  {scenario:"The Plan",text:"Someone asks you to slow down and focus on one thing. You resist. Why?",opts:[
-    {l:"A",t:"What if I go all in and it still isn't enough?",v:"b1"},
-    {l:"B",t:"Once I deliver this, what do they actually need me for?",v:"b2"},
-    {l:"C",t:"Slowing down means everything piles up while I'm sitting still.",v:"b3"},
-    {l:"D",t:"If I commit fully and fail, everyone will have watched it happen.",v:"b4"}
+  {scenario:"The Family Call",text:"You just got off a call with your parents. They asked how things are going. You said fine. What you didn't say:",opts:[
+    {l:"A",t:"I don't think I'll ever feel like I've done enough for them.",v:"b1"},
+    {l:"B",t:"Everything I'm doing is partly for them. And that's exhausting to admit.",v:"b2"},
+    {l:"C",t:"I haven't stopped once this month and I don't know how to explain that.",v:"b3"},
+    {l:"D",t:"If they knew how uncertain I actually feel, it would break something.",v:"b4"},
+    {l:"E",t:"I keep thinking about the decision I made last year that I can't take back.",v:"b6"},
+    {l:"F",t:"I'm scared that if I slow down, everything will fall apart.",v:"b7"},
+    {l:"G",t:"I've worked this hard. The fact that it still doesn't feel like enough says something.",v:"b5"}
   ]},
-  {scenario:"Hard Decisions",text:"Someone close to you isn't pulling their weight. You've known for months. First thought you don't say:",opts:[
-    {l:"A",t:"What does it say about me that I let it get this far?",v:"b5"},
-    {l:"B",t:"If I handle this wrong, they'll never trust my judgment again.",v:"b4"},
-    {l:"C",t:"I keep replaying every moment where I missed the signs.",v:"b6"},
-    {l:"D",t:"I need to map every way this could go wrong before I say anything.",v:"b7"}
+  {scenario:"The Room",text:"You're in a meeting with people who have more — more money, more connections, more confidence. First thought:",opts:[
+    {l:"A",t:"I have to work twice as hard just to be taken as seriously.",v:"b1"},
+    {l:"B",t:"I need to figure out quickly what I can offer here.",v:"b2"},
+    {l:"C",t:"I'll prove myself through the quality of my work. That's all I've got.",v:"b3"},
+    {l:"D",t:"If they knew where I actually came from, something would shift.",v:"b4"},
+    {l:"E",t:"People like them have always had the advantage. That's just how it is.",v:"b6"},
+    {l:"F",t:"I need to understand every dynamic in this room before I say anything.",v:"b7"},
+    {l:"G",t:"One wrong move here and I lose the credibility I've spent years building.",v:"b5"}
   ]},
-  {scenario:"The Collision",text:"Personal crisis. High-stakes week at work. You tell nobody. Why?",opts:[
-    {l:"A",t:"Being seen as someone who can't handle both feels like proof of something.",v:"b1"},
-    {l:"B",t:"My job is to be useful here. Personal stuff is mine to carry.",v:"b2"},
-    {l:"C",t:"Stopping means everything I'm holding drops.",v:"b3"},
-    {l:"D",t:"If they see me struggling, everything I've built in their eyes falls apart.",v:"b4"}
+  {scenario:"The Decision",text:"A big opportunity lands. It's risky. It means leaving something stable. Your gut says yes. What stops you:",opts:[
+    {l:"A",t:"What if I take the leap and it turns out I wasn't actually good enough for it?",v:"b1"},
+    {l:"B",t:"I have people depending on me. I can't afford to be selfish right now.",v:"b2"},
+    {l:"C",t:"I need to keep delivering where I am before I earn the right to think bigger.",v:"b3"},
+    {l:"D",t:"If I try and fail publicly, I don't know who I am on the other side of that.",v:"b4"},
+    {l:"E",t:"I've made impulsive bets before. I know how that ends.",v:"b6"},
+    {l:"F",t:"I don't have enough information. I need to think through every possible outcome first.",v:"b7"},
+    {l:"G",t:"Failing at this level would confirm something I've been afraid of for a long time.",v:"b5"}
   ]},
-  {scenario:"The Attack",text:"Someone publicly tears apart your work. Some of it stings because it's true. What hits first?",opts:[
-    {l:"A",t:"This confirms everything I've secretly thought about myself.",v:"b5"},
-    {l:"B",t:"Everyone who respected me is reading this right now.",v:"b4"},
-    {l:"C",t:"I had the signals. I missed them.",v:"b6"},
-    {l:"D",t:"I need to get ahead of every version of this before it spreads.",v:"b7"}
+  {scenario:"The Recognition",text:"Someone else gets the credit for something you built. How it actually lands:",opts:[
+    {l:"A",t:"It stings because part of me needed that acknowledgment more than I want to admit.",v:"b1"},
+    {l:"B",t:"I put everything into making this work for the team. Nobody saw it.",v:"b2"},
+    {l:"C",t:"Results matter. I'll build something bigger and let that speak.",v:"b3"},
+    {l:"D",t:"I feel exposed. Like the real version of my contribution has been erased.",v:"b4"},
+    {l:"E",t:"This has happened before. It's a pattern I can't seem to escape.",v:"b6"},
+    {l:"F",t:"I should have managed the optics better. I lost control of the narrative.",v:"b7"},
+    {l:"G",t:"If I can't protect what I build, maybe I don't deserve to be in this role.",v:"b5"}
   ]},
-  {scenario:"The Hard Conversation",text:"You've been carrying something someone close to you needs to hear. What keeps you from saying it?",opts:[
-    {l:"A",t:"If I say it wrong, I lose the relationship.",v:"b6"},
-    {l:"B",t:"I don't know how it lands. That uncertainty stops me.",v:"b7"},
-    {l:"C",t:"I'm not sure my read is right enough to justify the disruption.",v:"b1"},
-    {l:"D",t:"Once I open it, I can't control where it goes.",v:"b7"}
+  {scenario:"The Slowdown",text:"Things are genuinely quiet for the first time in months. No crisis, no deadline. You feel:",opts:[
+    {l:"A",t:"Like I should be using this time to get ahead. Resting feels irresponsible.",v:"b1"},
+    {l:"B",t:"Useless. If I'm not needed right now, I'm not sure what I'm for.",v:"b2"},
+    {l:"C",t:"Guilty. There's always more to do and I'm sitting here doing nothing.",v:"b3"},
+    {l:"D",t:"Exposed. The noise was covering something I now have to sit with.",v:"b4"},
+    {l:"E",t:"Unsettled. Stillness brings up things I'd rather not think about.",v:"b6"},
+    {l:"F",t:"Anxious. Quiet usually means something is about to go wrong.",v:"b7"},
+    {l:"G",t:"Like I haven't earned this yet. I'll rest when I've actually made it.",v:"b5"}
   ]},
-  {scenario:"The Recovery",text:"Months without real rest. You know you should stop. The real reason you haven't:",opts:[
-    {l:"A",t:"Stopping means sitting with everything I'm not sure I'm doing well enough.",v:"b1"},
-    {l:"B",t:"The moment I step back, people will see how much depended on me being there.",v:"b2"},
-    {l:"C",t:"Rest is something I'll earn once the work justifies it. Not yet.",v:"b3"},
-    {l:"D",t:"I've been moving so long I don't know who I am when I stop.",v:"b3"}
+  {scenario:"The Feedback",text:"Someone you respect gives you hard feedback. It's fair. How your body responds before your mind does:",opts:[
+    {l:"A",t:"Shame. Like they've confirmed something I've been trying to hide from myself.",v:"b1"},
+    {l:"B",t:"Panic. If they see me as less capable, I lose my place in this relationship.",v:"b2"},
+    {l:"C",t:"Immediately making a plan to fix it. The discomfort only stops when I act.",v:"b3"},
+    {l:"D",t:"The urge to explain myself — to make sure they don't have the wrong impression.",v:"b4"},
+    {l:"E",t:"I'm already tracing this back to something that happened before.",v:"b6"},
+    {l:"F",t:"I need to understand exactly what they meant before I can do anything with it.",v:"b7"},
+    {l:"G",t:"Fear. If this is a pattern, it means something about who I actually am.",v:"b5"}
   ]},
-  {scenario:"The Win",text:"Biggest result of your career lands. People around you are celebrating. Honest answer you keep to yourself:",opts:[
-    {l:"A",t:"I feel relieved. Which isn't the same thing. Already onto what I haven't done.",v:"b1"},
-    {l:"B",t:"Now I have to be worth what they bet on me.",v:"b5"},
-    {l:"C",t:"Cool. When does the other shoe drop?",v:"b7"},
-    {l:"D",t:"I really hope the right people noticed. That matters more than it should.",v:"b2"}
+  {scenario:"The Win",text:"You hit the goal. The thing you've been working toward for two years. What no one hears you say:",opts:[
+    {l:"A",t:"It happened. But I already know it won't feel like enough for long.",v:"b1"},
+    {l:"B",t:"I hope the people who believed in me feel like it was worth it.",v:"b2"},
+    {l:"C",t:"Okay. What's next. I can't stop now.",v:"b3"},
+    {l:"D",t:"I feel like I got away with something. Like they'll figure me out eventually.",v:"b4"},
+    {l:"E",t:"Every time something good happens, I wait for the thing that takes it away.",v:"b6"},
+    {l:"F",t:"Now I have to protect this. I can't afford to lose what I've built.",v:"b7"},
+    {l:"G",t:"Now I have to prove it wasn't a fluke.",v:"b5"}
   ]}
 ];
 
