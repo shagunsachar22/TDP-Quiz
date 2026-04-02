@@ -956,155 +956,220 @@ function showShareCard(belief, noise, signal, song, artist){
   var existing = document.getElementById('share-overlay');
   if(existing) existing.remove();
 
+  var quizUrl     = 'https://shagunsachar22.github.io/tdp-quiz';
+  var shareText   = '"' + noise + '" \u2014 but the signal is: "' + signal + '". My anthem: ' + song + ' by ' + artist + '. Find yours \u2192 ' + quizUrl + ' via @thedeliberatepause';
+  var encodedText = encodeURIComponent(shareText);
+  var encodedUrl  = encodeURIComponent(quizUrl);
+
+  // ── Overlay ──────────────────────────────────────────────
   var overlay = document.createElement('div');
   overlay.id = 'share-overlay';
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;';
-
-  var quizUrl = 'https://shagunsachar22.github.io/tdp-quiz';
-  var shareText = '"' + noise + '" — but the signal is: "' + signal + '". My anthem: ' + song + ' by ' + artist + '. What\'s yours? ' + quizUrl + ' via @thedeliberatepause';
-
-  // Headphones SVG — TDP brand mark
-  var headphonesSVG = '<svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:48px;margin:0 auto 20px;display:block;filter:drop-shadow(0 0 16px rgba(212,144,47,0.4))">'
-    + '<path d="M24 52 C24 28 38 14 60 14 C82 14 96 28 96 52" stroke="#D4902F" stroke-width="3.5" stroke-linecap="round" fill="none"/>'
-    + '<path d="M24 52 C24 28 38 14 60 14 C82 14 96 28 96 52" stroke="rgba(212,144,47,0.12)" stroke-width="11" stroke-linecap="round" fill="none"/>'
-    + '<rect x="12" y="50" width="16" height="24" rx="8" fill="#0D0C0A" stroke="#D4902F" stroke-width="2.5"/>'
-    + '<rect x="92" y="50" width="16" height="24" rx="8" fill="#0D0C0A" stroke="#D4902F" stroke-width="2.5"/>'
-    + '<circle cx="20" cy="62" r="4.5" fill="#D4902F" opacity="0.75"/>'
-    + '<circle cx="100" cy="62" r="4.5" fill="#D4902F" opacity="0.75"/>'
-    + '<line x1="20" y1="50" x2="20" y2="38" stroke="rgba(212,144,47,0.3)" stroke-width="1.5"/>'
-    + '<line x1="100" y1="50" x2="100" y2="38" stroke="rgba(212,144,47,0.3)" stroke-width="1.5"/>'
-    + '</svg>';
-
-  // Noise cancelling wave lines
-  var waveSVG = '<svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;margin:0 auto 16px;display:block;opacity:0.35">'
-    + '<path d="M0 12 Q25 4 50 12 Q75 20 100 12 Q125 4 150 12 Q175 20 200 12" stroke="#D4902F" stroke-width="1.5" fill="none"/>'
-    + '<path d="M0 12 Q25 18 50 12 Q75 6 100 12 Q125 18 150 12 Q175 6 200 12" stroke="rgba(212,144,47,0.5)" stroke-width="1" fill="none"/>'
-    + '</svg>';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch;';
 
   overlay.innerHTML = `
-    <div id="share-card" style="background:linear-gradient(160deg,#111009 0%,#0D0C0A 60%,#0f0d0b 100%);border:1px solid rgba(212,144,47,0.3);max-width:360px;width:100%;padding:32px 28px 24px;text-align:center;position:relative;box-shadow:0 0 60px rgba(212,144,47,0.08);">
+    <div style="max-width:360px;width:100%;margin:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:10px 0 24px;">
 
-      <!-- Top amber line -->
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#D4902F,transparent);"></div>
+      <!-- SHARE CARD — screenshot this for Instagram -->
+      <div id="share-card" style="
+        background:linear-gradient(160deg,#131109 0%,#0D0C0A 55%,#100f0d 100%);
+        border:1px solid rgba(212,144,47,0.28);
+        width:100%;padding:28px 24px 22px;
+        text-align:center;position:relative;
+        box-shadow:0 8px 48px rgba(0,0,0,0.6),0 0 0 1px rgba(212,144,47,0.06);
+      ">
+        <!-- amber top rule -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#D4902F 40%,#D4902F 60%,transparent 100%);border-radius:1px;"></div>
 
-      <!-- Brand -->
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(212,144,47,0.6);text-transform:uppercase;margin-bottom:24px;">The Deliberate Pause</div>
+        <!-- brand eyebrow -->
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.24em;color:rgba(212,144,47,0.55);text-transform:uppercase;margin-bottom:20px;">The Deliberate Pause</div>
 
-      <!-- Headphones -->
-      ${headphonesSVG}
+        <!-- headphones graphic — exact match to result screen -->
+        <div style="position:relative;display:inline-block;margin-bottom:20px;">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(212,144,47,0.16) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="position:absolute;top:-3px;right:-8px;background:#D4902F;color:#0D0C0A;font-family:'DM Mono',monospace;font-size:6px;letter-spacing:0.1em;padding:2px 5px;text-transform:uppercase;font-weight:600;z-index:2;">NC</div>
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;filter:drop-shadow(0 0 24px rgba(212,144,47,0.45));display:block;">
+            <path d="M20 52 C20 30 35 16 50 16 C65 16 80 30 80 52" stroke="#d4902f" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <path d="M20 52 C20 30 35 16 50 16 C65 16 80 30 80 52" stroke="rgba(212,144,47,0.15)" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <rect x="12" y="50" width="14" height="26" rx="7" fill="#1a1814" stroke="#d4902f" stroke-width="2.5"/>
+            <rect x="74" y="50" width="14" height="26" rx="7" fill="#1a1814" stroke="#d4902f" stroke-width="2.5"/>
+            <circle cx="19" cy="63" r="4" fill="#d4902f" opacity="0.7"/>
+            <circle cx="81" cy="63" r="4" fill="#d4902f" opacity="0.7"/>
+          </svg>
+        </div>
 
-      <!-- Noise label -->
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(240,235,224,0.3);text-transform:uppercase;margin-bottom:8px;">noise</div>
+        <!-- noise -->
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.22em;color:rgba(240,235,224,0.28);text-transform:uppercase;margin-bottom:7px;">noise</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;color:rgba(240,235,224,0.6);line-height:1.55;margin-bottom:16px;font-style:italic;">${noise}</div>
 
-      <!-- Noise value -->
-      <div style="font-family:'Playfair Display',serif;font-size:15px;color:rgba(240,235,224,0.65);line-height:1.5;margin-bottom:18px;font-style:italic;">${noise}</div>
+        <!-- wave divider -->
+        <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;margin:0 auto 16px;display:block;">
+          <path d="M0 10 Q25 3 50 10 Q75 17 100 10 Q125 3 150 10 Q175 17 200 10" stroke="rgba(212,144,47,0.35)" stroke-width="1.5" fill="none"/>
+          <path d="M0 10 Q25 15 50 10 Q75 5 100 10 Q125 15 150 10 Q175 5 200 10" stroke="rgba(212,144,47,0.15)" stroke-width="1" fill="none"/>
+        </svg>
 
-      <!-- Wave divider -->
-      ${waveSVG}
+        <!-- signal -->
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.22em;color:rgba(212,144,47,0.45);text-transform:uppercase;margin-bottom:7px;">signal</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;color:#D4902F;line-height:1.4;margin-bottom:20px;font-weight:700;">${signal}</div>
 
-      <!-- Signal label -->
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(212,144,47,0.5);text-transform:uppercase;margin-bottom:8px;">signal</div>
+        <!-- thin rule -->
+        <div style="width:40px;height:1px;background:rgba(212,144,47,0.2);margin:0 auto 16px;"></div>
 
-      <!-- Signal value -->
-      <div style="font-family:'Playfair Display',serif;font-size:18px;color:#D4902F;line-height:1.4;margin-bottom:24px;font-weight:600;">${signal}</div>
+        <!-- anthem -->
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.22em;color:rgba(240,235,224,0.25);text-transform:uppercase;margin-bottom:6px;">anthem</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;color:#F0EBE0;margin-bottom:3px;">${song}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(240,235,224,0.32);margin-bottom:20px;letter-spacing:0.06em;">${artist}</div>
 
-      <!-- Divider -->
-      <div style="width:48px;height:1px;background:rgba(212,144,47,0.25);margin:0 auto 20px;"></div>
+        <!-- domain -->
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.18em;color:rgba(240,235,224,0.15);text-transform:uppercase;">thedeliberatepause.com</div>
 
-      <!-- Anthem -->
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(240,235,224,0.3);text-transform:uppercase;margin-bottom:7px;">anthem</div>
-      <div style="font-family:'Playfair Display',serif;font-size:15px;color:#F0EBE0;margin-bottom:3px;">${song}</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,235,224,0.35);margin-bottom:24px;letter-spacing:0.06em;">${artist}</div>
-
-      <!-- Bottom domain -->
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.16em;color:rgba(240,235,224,0.18);text-transform:uppercase;">thedeliberatepause.com</div>
-
-      <!-- Bottom amber line -->
-      <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,144,47,0.2),transparent);"></div>
-    </div>
-
-    <!-- Share actions -->
-    <div style="max-width:360px;width:100%;margin-top:14px;display:flex;flex-direction:column;gap:8px;">
-
-      <!-- Primary share — triggers OS share sheet on mobile (Instagram, WhatsApp, X etc.) -->
-      <button id="share-native-btn" style="background:#D4902F;color:#0D0C0A;border:none;padding:15px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;width:100%;font-weight:700;">Share my result →</button>
-
-      <!-- Platform direct links row -->
-      <div style="display:flex;gap:8px;">
-        <a id="share-x" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">X / Twitter</a>
-        <a id="share-linkedin" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">LinkedIn</a>
-        <a id="share-whatsapp" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">WhatsApp</a>
+        <!-- amber bottom rule -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,144,47,0.18),transparent);"></div>
       </div>
 
-      <!-- Copy -->
-      <button id="share-copy-btn" style="background:transparent;color:rgba(240,235,224,0.55);border:1px solid rgba(240,235,224,0.14);padding:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;width:100%;">Copy to clipboard</button>
+      <!-- screenshot hint -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;color:rgba(240,235,224,0.22);text-transform:uppercase;text-align:center;">↑ screenshot for instagram stories</div>
 
-      <!-- Screenshot hint -->
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:rgba(240,235,224,0.2);text-transform:uppercase;text-align:center;padding:4px 0;">or screenshot the card for instagram stories</div>
+      <!-- SHARE BUTTONS -->
+
+      <!-- Instagram: copy + open -->
+      <button id="share-ig-btn" style="
+        background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+        color:#fff;border:none;padding:14px;
+        font-family:'DM Mono',monospace;font-size:11px;
+        letter-spacing:0.14em;text-transform:uppercase;
+        cursor:pointer;width:100%;font-weight:600;
+      ">Instagram — copy &amp; open →</button>
+
+      <!-- X, LinkedIn, WhatsApp row -->
+      <div style="display:flex;gap:8px;width:100%;">
+        <a id="share-x-btn" href="#" target="_blank" rel="noopener" style="
+          flex:1;display:block;padding:12px 6px;
+          background:rgba(240,235,224,0.04);
+          border:1px solid rgba(240,235,224,0.1);
+          font-family:'DM Mono',monospace;font-size:9px;
+          letter-spacing:0.1em;color:rgba(240,235,224,0.55);
+          text-align:center;text-decoration:none;text-transform:uppercase;
+        ">&#x1D54F; / Twitter</a>
+        <a id="share-li-btn" href="#" target="_blank" rel="noopener" style="
+          flex:1;display:block;padding:12px 6px;
+          background:rgba(240,235,224,0.04);
+          border:1px solid rgba(240,235,224,0.1);
+          font-family:'DM Mono',monospace;font-size:9px;
+          letter-spacing:0.1em;color:rgba(240,235,224,0.55);
+          text-align:center;text-decoration:none;text-transform:uppercase;
+        ">LinkedIn</a>
+        <a id="share-wa-btn" href="#" target="_blank" rel="noopener" style="
+          flex:1;display:block;padding:12px 6px;
+          background:rgba(240,235,224,0.04);
+          border:1px solid rgba(240,235,224,0.1);
+          font-family:'DM Mono',monospace;font-size:9px;
+          letter-spacing:0.1em;color:rgba(240,235,224,0.55);
+          text-align:center;text-decoration:none;text-transform:uppercase;
+        ">WhatsApp</a>
+      </div>
+
+      <!-- More apps (native OS share sheet) -->
+      <button id="share-more-btn" style="
+        background:transparent;color:rgba(240,235,224,0.5);
+        border:1px solid rgba(240,235,224,0.12);
+        padding:13px;font-family:'DM Mono',monospace;
+        font-size:10px;letter-spacing:0.14em;
+        text-transform:uppercase;cursor:pointer;width:100%;
+      ">More apps (iMessage, email…)</button>
+
+      <!-- Copy -->
+      <button id="share-copy-btn" style="
+        background:transparent;color:rgba(240,235,224,0.35);
+        border:1px solid rgba(240,235,224,0.08);
+        padding:11px;font-family:'DM Mono',monospace;
+        font-size:9px;letter-spacing:0.12em;
+        text-transform:uppercase;cursor:pointer;width:100%;
+      ">Copy to clipboard</button>
 
       <!-- Close -->
-      <button onclick="document.getElementById('share-overlay').remove()" style="background:transparent;color:rgba(240,235,224,0.2);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;">Close ✕</button>
+      <button id="share-close-btn" style="
+        background:transparent;color:rgba(240,235,224,0.2);
+        border:none;padding:8px;
+        font-family:'DM Mono',monospace;font-size:9px;
+        letter-spacing:0.1em;text-transform:uppercase;
+        cursor:pointer;width:100%;
+      ">Close ✕</button>
     </div>
   `;
 
   document.body.appendChild(overlay);
 
-  // Encode share text for URLs
-  var encodedText = encodeURIComponent(shareText);
-  var encodedUrl = encodeURIComponent(quizUrl);
+  // ── Wire up platform links ───────────────────────────────
+  document.getElementById('share-x-btn').href =
+    'https://twitter.com/intent/tweet?text=' + encodedText;
 
-  // X / Twitter
-  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + encodedText;
+  document.getElementById('share-li-btn').href =
+    'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl +
+    '&summary=' + encodeURIComponent('"' + noise + '" \u2014 but the signal is "' + signal + '". My anthem: ' + song + ' by ' + artist + '. What\'s yours?');
 
-  // LinkedIn
-  document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl + '&summary=' + encodeURIComponent('"' + noise + '" — but the signal is "' + signal + '". My anthem: ' + song + ' by ' + artist + '. What\'s yours?');
+  document.getElementById('share-wa-btn').href =
+    'https://wa.me/?text=' + encodedText;
 
-  // WhatsApp
-  document.getElementById('share-whatsapp').href = 'https://wa.me/?text=' + encodedText;
+  // ── Instagram: copy text then open Instagram ─────────────
+  document.getElementById('share-ig-btn').onclick = function(){
+    var b = document.getElementById('share-ig-btn');
+    var copyText = '\uD83C\uDFA7 My noise: "' + noise + '"\n\nMy signal: "' + signal + '"\n\nMy anthem: ' + song + ' by ' + artist + '\n\nFind yours \u2192 ' + quizUrl + '\n\n#thedeliberatepause #limitingbeliefs';
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(copyText).then(function(){
+        b.textContent = 'Caption copied \u2014 opening Instagram\u2026';
+        b.style.background = '#1A5C3A';
+        setTimeout(function(){
+          window.open('instagram://app','_blank');
+          setTimeout(function(){
+            // fallback: open instagram.com if app not installed
+            window.open('https://www.instagram.com','_blank');
+          }, 1500);
+          b.textContent = 'Instagram \u2014 copy & open \u2192';
+          b.style.background = 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)';
+        }, 1200);
+      }).catch(function(){
+        // clipboard blocked — just open Instagram
+        window.open('https://www.instagram.com','_blank');
+      });
+    } else {
+      window.open('https://www.instagram.com','_blank');
+    }
+  };
 
-  // Native share (mobile OS sheet — shows Instagram, iMessage, etc.)
-  document.getElementById('share-native-btn').onclick = function(){
+  // ── More apps: OS native share sheet ────────────────────
+  document.getElementById('share-more-btn').onclick = function(){
     if(navigator.share){
       navigator.share({
-        title: 'My signal — The Deliberate Pause',
+        title: 'My signal \u2014 The Deliberate Pause',
         text: shareText,
         url: quizUrl
-      }).then(function(){
-        var b = document.getElementById('share-native-btn');
-        if(!b) return;
-        b.textContent = 'Shared ✓';
-        b.style.background = '#1A5C3A'; b.style.color = '#D8F3DC';
-        setTimeout(function(){ b.textContent = 'Share my result →'; b.style.background = '#D4902F'; b.style.color = '#0D0C0A'; }, 3000);
       }).catch(function(){});
     } else {
-      // Desktop: navigator.share not supported — auto-copy and inform
-      var copyText = shareText;
-      if(navigator.clipboard){
-        navigator.clipboard.writeText(copyText);
-      }
-      var b = document.getElementById('share-native-btn');
-      b.textContent = 'Copied to clipboard ✓';
-      b.style.background = '#1A5C3A'; b.style.color = '#D8F3DC';
-      setTimeout(function(){ b.textContent = 'Share my result →'; b.style.background = '#D4902F'; b.style.color = '#0D0C0A'; }, 3000);
+      // Desktop fallback
+      var b = document.getElementById('share-more-btn');
+      if(navigator.clipboard) navigator.clipboard.writeText(shareText);
+      b.textContent = 'Copied to clipboard \u2713';
+      b.style.color = '#D4902F'; b.style.borderColor = 'rgba(212,144,47,0.4)';
+      setTimeout(function(){ b.textContent = 'More apps (iMessage, email\u2026)'; b.style.color=''; b.style.borderColor=''; }, 2500);
     }
   };
 
-  // Copy to clipboard
+  // ── Copy to clipboard ────────────────────────────────────
   document.getElementById('share-copy-btn').onclick = function(){
-    var copyText = shareText;
+    var b = document.getElementById('share-copy-btn');
     if(navigator.clipboard){
-      navigator.clipboard.writeText(copyText);
+      navigator.clipboard.writeText(shareText);
     } else {
       var ta = document.createElement('textarea');
-      ta.value = copyText; document.body.appendChild(ta);
+      ta.value = shareText; document.body.appendChild(ta);
       ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
     }
-    var b = document.getElementById('share-copy-btn');
-    b.textContent = '✓ Copied'; b.style.color = '#D4902F'; b.style.borderColor = 'rgba(212,144,47,0.4)';
-    setTimeout(function(){ b.textContent = 'Copy to clipboard'; b.style.color = ''; b.style.borderColor = ''; }, 2500);
+    b.textContent = '\u2713 Copied'; b.style.color = '#D4902F'; b.style.borderColor = 'rgba(212,144,47,0.35)';
+    setTimeout(function(){ b.textContent = 'Copy to clipboard'; b.style.color=''; b.style.borderColor=''; }, 2500);
   };
 
-  // Close on overlay background tap
+  // ── Close ────────────────────────────────────────────────
+  document.getElementById('share-close-btn').onclick = function(){ overlay.remove(); };
   overlay.onclick = function(e){ if(e.target === overlay){ overlay.remove(); } };
 }
 
