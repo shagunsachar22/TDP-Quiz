@@ -953,84 +953,161 @@ function shareResult(){
 }
 
 function showShareCard(belief, noise, signal, song, artist){
-  // Build an overlay with a shareable card
-  var overlay=document.createElement('div');
-  overlay.id='share-overlay';
-  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;';
+  var existing = document.getElementById('share-overlay');
+  if(existing) existing.remove();
 
-  var quizUrl='https://shagunsachar22.github.io/tdp-quiz';
-  var shareText='My noise: '+noise+'. My signal: '+signal+'. My anthem: '+song+' by '+artist+'. Find yours at The Deliberate Pause.';
+  var overlay = document.createElement('div');
+  overlay.id = 'share-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;';
 
-  overlay.innerHTML=`
-    <div id="share-card" style="background:#0D0C0A;border:1px solid rgba(212,144,47,0.25);max-width:380px;width:100%;padding:36px 32px 28px;text-align:center;position:relative;">
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#D4902F;text-transform:uppercase;margin-bottom:28px;">The Deliberate Pause</div>
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;color:rgba(240,235,224,0.35);text-transform:uppercase;margin-bottom:8px;">The noise</div>
-      <div style="font-family:'Playfair Display',serif;font-size:16px;color:#F0EBE0;line-height:1.4;margin-bottom:20px;">${noise}</div>
-      <div style="width:40px;height:1px;background:rgba(212,144,47,0.3);margin:0 auto 20px;"></div>
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;color:rgba(240,235,224,0.35);text-transform:uppercase;margin-bottom:8px;">The signal</div>
-      <div style="font-family:'Playfair Display',serif;font-size:16px;color:#D4902F;line-height:1.4;margin-bottom:24px;">${signal}</div>
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;color:rgba(240,235,224,0.35);text-transform:uppercase;margin-bottom:6px;">My anthem</div>
-      <div style="font-family:'Playfair Display',serif;font-size:14px;color:#F0EBE0;margin-bottom:4px;">${song}</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,235,224,0.45);margin-bottom:28px;">${artist}</div>
-      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;color:rgba(240,235,224,0.25);text-transform:uppercase;">thedeliberatepause.com</div>
+  var quizUrl = 'https://shagunsachar22.github.io/tdp-quiz';
+  var shareText = '"' + noise + '" — but the signal is: "' + signal + '". My anthem: ' + song + ' by ' + artist + '. What\'s yours? ' + quizUrl + ' via @thedeliberatepause';
+
+  // Headphones SVG — TDP brand mark
+  var headphonesSVG = '<svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:48px;margin:0 auto 20px;display:block;filter:drop-shadow(0 0 16px rgba(212,144,47,0.4))">'
+    + '<path d="M24 52 C24 28 38 14 60 14 C82 14 96 28 96 52" stroke="#D4902F" stroke-width="3.5" stroke-linecap="round" fill="none"/>'
+    + '<path d="M24 52 C24 28 38 14 60 14 C82 14 96 28 96 52" stroke="rgba(212,144,47,0.12)" stroke-width="11" stroke-linecap="round" fill="none"/>'
+    + '<rect x="12" y="50" width="16" height="24" rx="8" fill="#0D0C0A" stroke="#D4902F" stroke-width="2.5"/>'
+    + '<rect x="92" y="50" width="16" height="24" rx="8" fill="#0D0C0A" stroke="#D4902F" stroke-width="2.5"/>'
+    + '<circle cx="20" cy="62" r="4.5" fill="#D4902F" opacity="0.75"/>'
+    + '<circle cx="100" cy="62" r="4.5" fill="#D4902F" opacity="0.75"/>'
+    + '<line x1="20" y1="50" x2="20" y2="38" stroke="rgba(212,144,47,0.3)" stroke-width="1.5"/>'
+    + '<line x1="100" y1="50" x2="100" y2="38" stroke="rgba(212,144,47,0.3)" stroke-width="1.5"/>'
+    + '</svg>';
+
+  // Noise cancelling wave lines
+  var waveSVG = '<svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;margin:0 auto 16px;display:block;opacity:0.35">'
+    + '<path d="M0 12 Q25 4 50 12 Q75 20 100 12 Q125 4 150 12 Q175 20 200 12" stroke="#D4902F" stroke-width="1.5" fill="none"/>'
+    + '<path d="M0 12 Q25 18 50 12 Q75 6 100 12 Q125 18 150 12 Q175 6 200 12" stroke="rgba(212,144,47,0.5)" stroke-width="1" fill="none"/>'
+    + '</svg>';
+
+  overlay.innerHTML = `
+    <div id="share-card" style="background:linear-gradient(160deg,#111009 0%,#0D0C0A 60%,#0f0d0b 100%);border:1px solid rgba(212,144,47,0.3);max-width:360px;width:100%;padding:32px 28px 24px;text-align:center;position:relative;box-shadow:0 0 60px rgba(212,144,47,0.08);">
+
+      <!-- Top amber line -->
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#D4902F,transparent);"></div>
+
+      <!-- Brand -->
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(212,144,47,0.6);text-transform:uppercase;margin-bottom:24px;">The Deliberate Pause</div>
+
+      <!-- Headphones -->
+      ${headphonesSVG}
+
+      <!-- Noise label -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(240,235,224,0.3);text-transform:uppercase;margin-bottom:8px;">noise</div>
+
+      <!-- Noise value -->
+      <div style="font-family:'Playfair Display',serif;font-size:15px;color:rgba(240,235,224,0.65);line-height:1.5;margin-bottom:18px;font-style:italic;">${noise}</div>
+
+      <!-- Wave divider -->
+      ${waveSVG}
+
+      <!-- Signal label -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(212,144,47,0.5);text-transform:uppercase;margin-bottom:8px;">signal</div>
+
+      <!-- Signal value -->
+      <div style="font-family:'Playfair Display',serif;font-size:18px;color:#D4902F;line-height:1.4;margin-bottom:24px;font-weight:600;">${signal}</div>
+
+      <!-- Divider -->
+      <div style="width:48px;height:1px;background:rgba(212,144,47,0.25);margin:0 auto 20px;"></div>
+
+      <!-- Anthem -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;color:rgba(240,235,224,0.3);text-transform:uppercase;margin-bottom:7px;">anthem</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;color:#F0EBE0;margin-bottom:3px;">${song}</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,235,224,0.35);margin-bottom:24px;letter-spacing:0.06em;">${artist}</div>
+
+      <!-- Bottom domain -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.16em;color:rgba(240,235,224,0.18);text-transform:uppercase;">thedeliberatepause.com</div>
+
+      <!-- Bottom amber line -->
+      <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,144,47,0.2),transparent);"></div>
     </div>
-    <div style="max-width:380px;width:100%;margin-top:16px;display:flex;flex-direction:column;gap:10px;">
-      <button id="share-native-btn" style="background:#D4902F;color:#0D0C0A;border:none;padding:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;width:100%;">Share →</button>
-      <button id="share-copy-btn" style="background:transparent;color:rgba(240,235,224,0.6);border:1px solid rgba(240,235,224,0.18);padding:13px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;width:100%;">Copy to clipboard</button>
-      <button id="share-screenshot-hint" style="background:transparent;color:rgba(240,235,224,0.28);border:none;padding:6px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;cursor:default;width:100%;">or screenshot the card above</button>
-      <button onclick="document.getElementById('share-overlay').remove()" style="background:transparent;color:rgba(240,235,224,0.25);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;">Close ✕</button>
+
+    <!-- Share actions -->
+    <div style="max-width:360px;width:100%;margin-top:14px;display:flex;flex-direction:column;gap:8px;">
+
+      <!-- Primary share — triggers OS share sheet on mobile (Instagram, WhatsApp, X etc.) -->
+      <button id="share-native-btn" style="background:#D4902F;color:#0D0C0A;border:none;padding:15px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;width:100%;font-weight:700;">Share my result →</button>
+
+      <!-- Platform direct links row -->
+      <div style="display:flex;gap:8px;">
+        <a id="share-x" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">X / Twitter</a>
+        <a id="share-linkedin" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">LinkedIn</a>
+        <a id="share-whatsapp" href="#" target="_blank" style="flex:1;display:block;padding:11px 8px;background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.1);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,235,224,0.5);text-align:center;text-decoration:none;text-transform:uppercase;">WhatsApp</a>
+      </div>
+
+      <!-- Copy -->
+      <button id="share-copy-btn" style="background:transparent;color:rgba(240,235,224,0.55);border:1px solid rgba(240,235,224,0.14);padding:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;width:100%;">Copy to clipboard</button>
+
+      <!-- Screenshot hint -->
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:rgba(240,235,224,0.2);text-transform:uppercase;text-align:center;padding:4px 0;">or screenshot the card for instagram stories</div>
+
+      <!-- Close -->
+      <button onclick="document.getElementById('share-overlay').remove()" style="background:transparent;color:rgba(240,235,224,0.2);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;">Close ✕</button>
     </div>
   `;
 
   document.body.appendChild(overlay);
 
-  // Native share (mobile)
-  document.getElementById('share-native-btn').onclick=function(){
+  // Encode share text for URLs
+  var encodedText = encodeURIComponent(shareText);
+  var encodedUrl = encodeURIComponent(quizUrl);
+
+  // X / Twitter
+  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + encodedText;
+
+  // LinkedIn
+  document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl + '&summary=' + encodeURIComponent('"' + noise + '" — but the signal is "' + signal + '". My anthem: ' + song + ' by ' + artist + '. What\'s yours?');
+
+  // WhatsApp
+  document.getElementById('share-whatsapp').href = 'https://wa.me/?text=' + encodedText;
+
+  // Native share (mobile OS sheet — shows Instagram, iMessage, etc.)
+  document.getElementById('share-native-btn').onclick = function(){
     if(navigator.share){
-      // Mobile native share sheet — overlay stays open so copy button remains accessible
       navigator.share({
-        title:'My signal — The Deliberate Pause',
-        text:shareText,
-        url:quizUrl
+        title: 'My signal — The Deliberate Pause',
+        text: shareText,
+        url: quizUrl
       }).then(function(){
-        var b=document.getElementById('share-native-btn');
-        b.textContent='Shared ✓'; b.style.background='#1A5C3A'; b.style.color='#D8F3DC';
-        setTimeout(function(){b.textContent='Share →';b.style.background='#D4902F';b.style.color='#0D0C0A';},3000);
+        var b = document.getElementById('share-native-btn');
+        if(!b) return;
+        b.textContent = 'Shared ✓';
+        b.style.background = '#1A5C3A'; b.style.color = '#D8F3DC';
+        setTimeout(function(){ b.textContent = 'Share my result →'; b.style.background = '#D4902F'; b.style.color = '#0D0C0A'; }, 3000);
       }).catch(function(){});
     } else {
-      // Desktop: no native share — make button copy instead and label it clearly
-      var b=document.getElementById('share-native-btn');
-      b.textContent='No share available — use copy below';
-      b.style.background='rgba(240,235,224,0.08)';
-      b.style.color='rgba(240,235,224,0.4)';
-      b.disabled=true;
+      // Desktop: navigator.share not supported — auto-copy and inform
+      var copyText = shareText;
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(copyText);
+      }
+      var b = document.getElementById('share-native-btn');
+      b.textContent = 'Copied to clipboard ✓';
+      b.style.background = '#1A5C3A'; b.style.color = '#D8F3DC';
+      setTimeout(function(){ b.textContent = 'Share my result →'; b.style.background = '#D4902F'; b.style.color = '#0D0C0A'; }, 3000);
     }
   };
 
-  // Copy link button
-  document.getElementById('share-copy-btn').onclick=function(){
-    var copyText=shareText+' '+quizUrl;
+  // Copy to clipboard
+  document.getElementById('share-copy-btn').onclick = function(){
+    var copyText = shareText;
     if(navigator.clipboard){
       navigator.clipboard.writeText(copyText);
     } else {
-      var ta=document.createElement('textarea');
-      ta.value=copyText; document.body.appendChild(ta);
+      var ta = document.createElement('textarea');
+      ta.value = copyText; document.body.appendChild(ta);
       ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
     }
-    var b=document.getElementById('share-copy-btn');
-    b.textContent='✓ Copied'; b.style.color='#D4902F'; b.style.borderColor='rgba(212,144,47,0.4)';
-    setTimeout(function(){b.textContent='Copy link';b.style.color='';b.style.borderColor='';},2500);
+    var b = document.getElementById('share-copy-btn');
+    b.textContent = '✓ Copied'; b.style.color = '#D4902F'; b.style.borderColor = 'rgba(212,144,47,0.4)';
+    setTimeout(function(){ b.textContent = 'Copy to clipboard'; b.style.color = ''; b.style.borderColor = ''; }, 2500);
   };
 
-  // Close on overlay background click
-  overlay.onclick=function(e){if(e.target===overlay){overlay.remove();}};
+  // Close on overlay background tap
+  overlay.onclick = function(e){ if(e.target === overlay){ overlay.remove(); } };
 }
 
-window.onerror=function(msg,src,line){
-  const box=document.getElementById('narrative-box');
-  if(box)box.innerHTML='<div style="color:#ff7070;font-family:monospace;font-size:11px;padding:16px">ERROR: '+msg+' (line '+line+')</div>';
-  return true;
-};
 </script>
 </body>
 </html>
