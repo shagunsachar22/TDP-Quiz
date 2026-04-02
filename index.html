@@ -738,7 +738,7 @@ function submitEmail(){
     anthem: result.song.song+' by '+result.song.artist
   };
 
-  fetch('/api/webhook',{
+  fetch('https://hook.eu1.make.com/5pgy4bi4wtpkstnp4lulvwidqhv3ax88',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
@@ -946,7 +946,7 @@ function shareResult(){
   var belief=document.getElementById('res-belief').textContent;
   var noise=document.getElementById('res-noise-val').textContent;
   var signal=document.getElementById('res-signal-val').textContent;
-  var quizUrl='https://shagunsachar22.github.io/tdp-quiz';
+  var quizUrl='https://www.thedeliberatepause.com/quiz';
 
   // Show the share card first
   showShareCard(belief, noise, signal, song, artist);
@@ -956,7 +956,7 @@ function showShareCard(belief, noise, signal, song, artist){
   var existing = document.getElementById('share-overlay');
   if(existing) existing.remove();
 
-  var quizUrl     = 'https://shagunsachar22.github.io/tdp-quiz';
+  var quizUrl     = 'https://www.thedeliberatepause.com/quiz';
   var shareText   = '"' + noise + '" \u2014 but the signal is: "' + signal + '". My anthem: ' + song + ' by ' + artist + '. Find yours \u2192 ' + quizUrl + ' via @thedeliberatepause';
   var encodedText = encodeURIComponent(shareText);
   var encodedUrl  = encodeURIComponent(quizUrl);
