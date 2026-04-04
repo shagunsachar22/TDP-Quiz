@@ -27,11 +27,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .sw1{width:180px;height:180px;top:0;left:0;border-color:rgba(80,200,120,0.5);animation-delay:1.4s;}
 .sw2{width:220px;height:220px;top:-20px;left:-20px;border-color:rgba(80,200,120,0.25);animation-delay:1.8s;}
 @keyframes signalOut{0%{transform:scale(0.7);opacity:0;}20%{opacity:1;}100%{transform:scale(1.6);opacity:0;}}
-.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);opacity:0.7;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);opacity:0.7;}
 .intro-title{font-family:'Playfair Display',serif;font-size:clamp(42px,9vw,76px);font-weight:900;line-height:0.95;color:var(--cream);margin:20px 0 18px;letter-spacing:-0.02em;}
 .intro-title em{font-style:italic;color:var(--amber-bright);}
-.intro-sub{font-size:19px;color:var(--cream);opacity:0.55;max-width:420px;margin:0 auto 12px;line-height:1.65;font-weight:300;}
-.intro-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);opacity:0.4;letter-spacing:0.2em;margin-bottom:52px;}
+.intro-sub{font-size:22px;color:var(--cream);opacity:0.72;max-width:440px;margin:0 auto 14px;line-height:1.7;font-weight:300;}
+.intro-meta{font-family:'DM Mono',monospace;font-size:14px;color:var(--amber);opacity:0.65;letter-spacing:0.16em;margin-bottom:52px;}
 .btn-primary{background:var(--amber);color:var(--bg);border:none;padding:16px 48px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);}
 .btn-primary:hover{background:var(--amber-bright);transform:translateY(-2px);box-shadow:0 8px 32px rgba(212,144,47,0.35);}
 
@@ -60,7 +60,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 #quiz-hp-svg{width:54px;height:54px;transition:filter 0.8s ease;}
 
 /* scenario label */
-.scenario-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--amber);opacity:0.5;margin-bottom:12px;}
+.scenario-tag{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);opacity:0.5;margin-bottom:12px;}
 
 /* question */
 .q-text{font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,26px);font-weight:700;line-height:1.3;color:var(--cream);margin-bottom:22px;letter-spacing:-0.01em;}
@@ -133,8 +133,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .res-noise-col{display:flex;flex-direction:column;gap:10px;flex-shrink:0;width:185px;}
 .res-noise-item{opacity:0;animation:fadeInLeft 0.6s ease forwards 0.2s;}
 @keyframes fadeInLeft{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:translateX(0);}}
-.rni-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px;opacity:0.5;}
-.rni-value{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;line-height:1.25;color:var(--noise-red);}
+.rni-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:6px;opacity:0.5;}
+.rni-value{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.3;color:var(--noise-red);}
 .rni-bar{height:2px;border-radius:2px;margin-top:6px;overflow:hidden;background:rgba(224,85,85,0.12);}
 .rni-bar-fill{height:100%;background:var(--noise-red);width:0%;border-radius:2px;animation:barGrow 1s ease forwards 0.5s;}
 @keyframes barGrow{to{width:100%;}}
@@ -160,24 +160,24 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .res-signal-col{display:flex;flex-direction:column;gap:10px;flex-shrink:0;width:185px;}
 .res-signal-item{opacity:0;animation:fadeInRight 0.6s ease forwards 1.2s;}
 @keyframes fadeInRight{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
-.rsi-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:#50c878;margin-bottom:4px;opacity:0.5;}
-.rsi-value{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--cream);line-height:1.25;}
+.rsi-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#50c878;margin-bottom:4px;opacity:0.5;}
+.rsi-value{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--cream);line-height:1.3;}
 .rsi-bar{height:2px;background:rgba(80,200,120,0.12);border-radius:2px;margin-top:6px;overflow:hidden;}
 .rsi-bar-fill{height:100%;background:#50c878;width:0%;border-radius:2px;animation:barGrow 1s ease forwards 1.5s;}
 
 /* belief named */
 .belief-strip{text-align:center;margin-top:28px;opacity:0;animation:fadeUp 0.6s ease forwards 0.4s;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.bs-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);opacity:0.55;margin-bottom:10px;}
+.bs-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);opacity:0.55;margin-bottom:10px;}
 .bs-belief{font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,26px);font-weight:700;font-style:italic;color:var(--cream);line-height:1.25;}
 
 .result-divider{width:100%;max-width:620px;height:1px;background:var(--border);margin:36px auto;}
 
 /* anthem */
 .anthem-block{text-align:center;opacity:0;animation:fadeUp 0.7s ease forwards 1.8s;max-width:620px;width:100%;}
-.ab-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);opacity:0.55;margin-bottom:12px;}
+.ab-eyebrow{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);opacity:0.55;margin-bottom:12px;}
 .ab-song{font-family:'Playfair Display',serif;font-size:clamp(34px,6vw,60px);font-weight:900;font-style:italic;color:var(--amber-bright);line-height:1.0;letter-spacing:-0.02em;margin-bottom:6px;}
-.ab-artist{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--cream);opacity:0.3;margin-bottom:16px;}
+.ab-artist{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);opacity:0.3;margin-bottom:16px;}
 .ab-release{font-size:16px;line-height:1.7;color:var(--cream);opacity:0.6;font-weight:300;max-width:480px;margin:0 auto 28px;font-family:'Crimson Pro',serif;}
 .ab-yt{display:none;align-items:center;gap:10px;background:transparent;border:1px solid rgba(212,144,47,0.4);color:var(--amber);padding:12px 28px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
 .ab-yt:hover{background:rgba(212,144,47,0.1);border-color:var(--amber);}
@@ -212,9 +212,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* DEMOGRAPHIC */
 #screen-demo{flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center;}
 .demo-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,38px);font-weight:900;color:var(--cream);line-height:1.15;margin-bottom:10px;}
-.demo-sub{font-size:15px;opacity:0.45;max-width:360px;margin:0 auto 40px;line-height:1.65;font-weight:300;}
+.demo-sub{font-size:17px;opacity:0.6;max-width:360px;margin:0 auto 40px;line-height:1.65;font-weight:300;}
 .demo-group{margin-bottom:32px;width:100%;max-width:440px;}
-.demo-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;opacity:0.45;margin-bottom:14px;}
+.demo-label{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.65;margin-bottom:14px;}
 .demo-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
 .demo-pill{background:rgba(240,235,224,0.04);border:1px solid rgba(240,235,224,0.12);padding:10px 20px;border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;color:rgba(240,235,224,0.55);cursor:pointer;transition:all 0.2s;}
 .demo-pill:hover{border-color:rgba(212,144,47,0.4);color:rgba(212,144,47,0.8);}
@@ -223,6 +223,28 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .demo-btn.ready{opacity:1;transition:opacity 0.3s,background 0.2s;}
 .demo-btn:hover{background:var(--amber-bright);}
 
+
+@media(max-width:480px){
+  .prog-text{font-family:'DM Mono',monospace;font-size:18px!important;letter-spacing:0.1em;opacity:0.85;}
+  .q-num{font-size:14px!important;}
+  .eyebrow{font-size:14px!important;}
+  .scenario-tag{font-size:18px!important;}
+  .opt-label{font-size:14px!important;}
+  .opt-text{font-size:16px!important;}
+  .email-note{font-size:12px!important;}
+  .demo-label{font-size:15px!important;opacity:0.75!important;}
+  .demo-sub{font-size:18px!important;}
+  .demo-pill{font-size:13px!important;padding:12px 18px!important;}
+  .ab-eyebrow{font-size:14px!important;}
+  .ab-artist{font-size:15px!important;}
+  .rni-label,.rsi-label{font-size:13px!important;}
+  .rni-value,.rsi-value{font-size:18px!important;}
+  .bs-eyebrow{font-size:13px!important;}
+  .bs-belief{font-size:20px!important;}
+  .narrative-text p{font-size:16px!important;line-height:1.75!important;}
+  .intro-sub{font-size:20px!important;opacity:0.8!important;}
+  .intro-meta{font-size:13px!important;opacity:0.75!important;}
+}
 </style>
 </head>
 <body>
@@ -241,8 +263,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </svg>
   </div>
   <p class="eyebrow">The Deliberate Pause</p>
-  <h1 class="intro-title">Cancel<br>the <em>noise.</em></h1>
-  <p class="intro-sub">You're performing at a high level. But something runs underneath it. 7 questions to name it — and find the song that releases it.</p>
+  <h1 class="intro-title">Find your<br><em>anthem.</em></h1>
+  <p <p class="intro-sub">7 questions to find the belief running you — and the anthem that releases it.</p>
   <p class="intro-meta">7 questions &nbsp;·&nbsp; 7 beliefs &nbsp;·&nbsp; 1 anthem</p>
   <button class="btn-primary" onclick="startQuiz()">Find my signal →</button>
 </div>
@@ -291,7 +313,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <p class="eyebrow" style="margin-bottom:14px">One last thing</p>
   <h2 class="email-title">Enter your email<br>to view your result.</h2>
-  <p class="email-sub">Your belief pattern and anthem are ready. Enter your email to unlock them.</p>
+  <p class="email-sub">Your limiting belief and your anthem are ready. Enter your email to unlock them.</p>
   <div class="email-row">
     <input type="email" id="email-in" class="email-in" placeholder="your@email.com">
     <button class="email-btn" onclick="submitEmail()">View my result →</button>
@@ -304,7 +326,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div id="screen-demo" class="screen">
   <p class="eyebrow" style="margin-bottom:14px">Almost there</p>
   <h2 class="demo-title">Two quick ones<br>before your result.</h2>
-  <p class="demo-sub">Helps us pick the right song for you.</p>
+  <p class="demo-sub">Helps us find the anthem that matches your signal.</p>
 
   <div class="demo-group">
     <p class="demo-label">How old are you?</p>
@@ -430,77 +452,68 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <script>
 const SONG_LIBRARY = [
-  {song:"River",artist:"Leon Bridges",yt:"https://www.youtube.com/results?search_query=River+Leon+Bridges",match:"The exhaustion of carrying the weight of not being enough. Forgiveness as release, not achievement."},
-  {song:"Holocene",artist:"Bon Iver",yt:"https://www.youtube.com/results?search_query=Holocene+Bon+Iver",match:"The beauty of smallness. Realising how much you've been inflating the stakes. Permission to be unremarkable."},
-  {song:"Flaws",artist:"Bastille",yt:"https://www.youtube.com/results?search_query=Flaws+Bastille",match:"Seeing your own patterns clearly and repeating them anyway. Gentle, honest accounting without punishment."},
-  {song:"Lua",artist:"Bright Eyes",yt:"https://www.youtube.com/results?search_query=Lua+Bright+Eyes",match:"The tenderness of being aware of your own patterns and doing them anyway. Reckoning without self-punishment."},
-  {song:"Do I Wanna Know?",artist:"Arctic Monkeys",yt:"https://www.youtube.com/results?search_query=Do+I+Wanna+Know+Arctic+Monkeys",match:"The slow burn of something unresolved that you keep circling. The ache of standing at the edge of enough."},
-  {song:"Outro",artist:"M83",yt:"https://www.youtube.com/results?search_query=Outro+M83",match:"The feeling of being on the edge of something enormous. The overwhelm of potential meeting self-doubt."},
-  {song:"Smother",artist:"Daughter",yt:"https://www.youtube.com/results?search_query=Smother+Daughter",match:"The quiet suffocation of never being enough for yourself. The weight of impossible standards."},
-  {song:"Lost in the Light",artist:"Bahamas",yt:"https://www.youtube.com/results?search_query=Lost+in+the+Light+Bahamas",match:"The lightness that's possible when you stop measuring yourself. Gentle and unhurried."},
-  {song:"Fix You",artist:"Coldplay",yt:"https://www.youtube.com/results?search_query=Fix+You+Coldplay",match:"The person who holds themselves responsible when things go wrong. The tenderness of being seen in failure."},
-  {song:"The Night Will Always Win",artist:"Manchester Orchestra",yt:"https://www.youtube.com/results?search_query=The+Night+Will+Always+Win+Manchester+Orchestra",match:"The specific loneliness of being in the dark alone. Company without false comfort."},
-  {song:"Iktara",artist:"Wake Up Sid",yt:"https://www.youtube.com/results?search_query=Iktara+Wake+Up+Sid",match:"The quiet ache of not knowing if you're enough — set to the most beautiful stillness."},
-  {song:"Masakali",artist:"Delhi-6",yt:"https://www.youtube.com/results?search_query=Masakali+Delhi+6",match:"The yearning of someone who has been performing so hard they've forgotten what freedom feels like."},
-  {song:"Strange Fruit",artist:"Nina Simone",yt:"https://www.youtube.com/results?search_query=Strange+Fruit+Nina+Simone",match:"The weight of performing strength while carrying private pain. Power as a mask for exhaustion."},
-  {song:"The Village",artist:"Wrabel",yt:"https://www.youtube.com/results?search_query=The+Village+Wrabel",match:"The longing to be accepted exactly as you are. Not the persona, not the performance. Just you."},
-  {song:"Gravity",artist:"John Mayer",yt:"https://www.youtube.com/results?search_query=Gravity+John+Mayer",match:"Being pulled in every direction. The exhaustion of being the centre around which everything orbits."},
-  {song:"How Soon is Now?",artist:"The Smiths",yt:"https://www.youtube.com/results?search_query=How+Soon+is+Now+The+Smiths",match:"The exhaustion of waiting to be chosen. The isolation of the person who gives and gives and is not seen."},
-  {song:"A Change is Gonna Come",artist:"Sam Cooke",yt:"https://www.youtube.com/results?search_query=A+Change+is+Gonna+Come+Sam+Cooke",match:"The bone-deep faith that belonging beyond usefulness is possible. For the one who has waited long enough."},
-  {song:"HUMBLE.",artist:"Kendrick Lamar",yt:"https://www.youtube.com/results?search_query=HUMBLE+Kendrick+Lamar",match:"The performance of invincibility over the deep need to be valued for more than what you produce."},
-  {song:"People Pleaser",artist:"Zara Larsson",yt:"https://www.youtube.com/results?search_query=People+Pleaser+Zara+Larsson",match:"The exhaustion of shapeshifting to be what everyone needs. Direct, modern, specifically names the pattern."},
-  {song:"Kabira",artist:"Yeh Jawaani Hai Deewani",yt:"https://www.youtube.com/results?search_query=Kabira+YJHD",match:"The ache of being needed by everyone but truly known by no one."},
-  {song:"Khairiyat",artist:"Chhichhore",yt:"https://www.youtube.com/results?search_query=Khairiyat+Chhichhore",match:"Asking after someone's wellbeing when you've spent your whole life making sure everyone else is okay."},
-  {song:"Shake It Out",artist:"Florence + The Machine",yt:"https://www.youtube.com/results?search_query=Shake+It+Out+Florence+Machine",match:"The compulsive forward motion of someone running from stillness. The release that comes when you finally stop."},
-  {song:"Fake Plastic Trees",artist:"Radiohead",yt:"https://www.youtube.com/results?search_query=Fake+Plastic+Trees+Radiohead",match:"The slow depletion of performing growth you don't feel. The quiet crisis beneath the surface of success."},
-  {song:"When the Party's Over",artist:"Billie Eilish",yt:"https://www.youtube.com/results?search_query=when+the+party+is+over+Billie+Eilish",match:"The specific emptiness after a milestone. The hollow feeling when the thing you worked for finally lands."},
-  {song:"Skinny Love",artist:"Bon Iver",yt:"https://www.youtube.com/results?search_query=Skinny+Love+Bon+Iver",match:"Being stretched too thin for too long. The rawness of someone who has given more than they had."},
-  {song:"Glory and Gore",artist:"Lorde",yt:"https://www.youtube.com/results?search_query=Glory+and+Gore+Lorde",match:"The ferocity of ambition without shame. The question underneath: who are you when the output stops?"},
-  {song:"Eye of the Tiger",artist:"Survivor",yt:"https://www.youtube.com/results?search_query=Eye+of+the+Tiger+Survivor",match:"Pure forward momentum. For when the body has been in go-mode so long it doesn't know another gear."},
-  {song:"Dog Days Are Over",artist:"Florence + The Machine",yt:"https://www.youtube.com/results?search_query=Dog+Days+Are+Over+Florence+Machine",match:"The electricity of a life finally moving. What you're running toward vs away from."},
-  {song:"Motion Picture Soundtrack",artist:"Radiohead",yt:"https://www.youtube.com/results?search_query=Motion+Picture+Soundtrack+Radiohead",match:"The grief of a life lived too much in the doing. Longing to feel something real after years of producing."},
-  {song:"Zinda",artist:"Bhaag Milkha Bhaag",yt:"https://www.youtube.com/results?search_query=Zinda+Bhaag+Milkha+Bhaag",match:"The anthem of the person who runs because stopping means ceasing to exist."},
-  {song:"Sadda Haq",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Sadda+Haq+Rockstar",match:"The rage of the person who has been producing and proving and still not being seen on their own terms."},
-  {song:"Work Song",artist:"Hozier",yt:"https://www.youtube.com/results?search_query=Work+Song+Hozier",match:"Labour as devotion — but also devotion as self-erasure. The person who works because work is love."},
-  {song:"Liability",artist:"Lorde",yt:"https://www.youtube.com/results?search_query=Liability+Lorde",match:"The fear of being too much. The grief of self-editing to keep the peace. Sung from inside the armour."},
-  {song:"The Night We Met",artist:"Lord Huron",yt:"https://www.youtube.com/results?search_query=The+Night+We+Met+Lord+Huron",match:"The grief of losing a version of yourself you loved. Longing for before the performance began."},
-  {song:"HUMBLE.",artist:"Kendrick Lamar",yt:"https://www.youtube.com/results?search_query=HUMBLE+Kendrick+Lamar",match:"Bravado as armour. The performance of invincibility over a deep need to be seen without the mask."},
-  {song:"Power",artist:"Kanye West",yt:"https://www.youtube.com/results?search_query=Power+Kanye+West",match:"The performance of certainty when you're not certain at all. The cost of never letting the mask slip."},
-  {song:"Lua",artist:"Bright Eyes",yt:"https://www.youtube.com/results?search_query=Lua+Bright+Eyes",match:"The tenderness of seeing your own mask and wearing it anyway. Gentle self-awareness without release yet."},
-  {song:"Holocene",artist:"Bon Iver",yt:"https://www.youtube.com/results?search_query=Holocene+Bon+Iver",match:"The relief of being small. For the person who has been performing bigness so long, smallness is a revelation."},
-  {song:"Kun Faya Kun",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Kun+Faya+Kun+Rockstar",match:"The complete dissolution of the armour through surrender. The person who finally stops and discovers something underneath that doesn't need protecting."},
-  {song:"Main Kya Hoon",artist:"Love Aaj Kal",yt:"https://www.youtube.com/results?search_query=Main+Kya+Hoon+Love+Aaj+Kal",match:"The raw confusion of someone asking who they are without the performance. The person behind the mask not knowing what they find when the mask comes off."},
-  {song:"Royals",artist:"Lorde",yt:"https://www.youtube.com/results?search_query=Royals+Lorde",match:"The performance of not caring. The person who has decided not wanting is safer than wanting and failing to belong."},
-  {song:"I Will Survive",artist:"Gloria Gaynor",yt:"https://www.youtube.com/results?search_query=I+Will+Survive+Gloria+Gaynor",match:"The moment doubt finally loses. The defiance that only comes from having been genuinely afraid."},
-  {song:"Nina Cried Power",artist:"Hozier",yt:"https://www.youtube.com/results?search_query=Nina+Cried+Power+Hozier",match:"The responsibility of building something and the fear of not being worthy of it. Power earned not given."},
-  {song:"Stubborn Love",artist:"The Lumineers",yt:"https://www.youtube.com/results?search_query=Stubborn+Love+Lumineers",match:"The stubbornness that looks like irrationality but is actually deep knowing. Keep going anyway."},
-  {song:"Eye of the Tiger",artist:"Survivor",yt:"https://www.youtube.com/results?search_query=Eye+of+the+Tiger+Survivor",match:"The defiance of forward motion when fear has been looping. Pure momentum as a form of courage."},
-  {song:"Blackbird",artist:"The Beatles",yt:"https://www.youtube.com/results?search_query=Blackbird+Beatles",match:"The permission to rise — not from triumph but from readiness. You've always been capable of this."},
-  {song:"Kar Har Maidaan Fateh",artist:"Sanju",yt:"https://www.youtube.com/results?search_query=Kar+Har+Maidaan+Fateh+Sanju",match:"Redemption as the only option. For the person who has failed publicly and is rebuilding."},
-  {song:"Rise Up",artist:"Andra Day",yt:"https://www.youtube.com/results?search_query=Rise+Up+Andra+Day",match:"The slow, earned defiance of someone who has been down and is choosing to get up."},
-  {song:"Try",artist:"P!nk",yt:"https://www.youtube.com/results?search_query=Try+Pink",match:"The specific courage of someone who keeps going after visible, public failure."},
-  {song:"The Wolves (Act I and II)",artist:"Bon Iver",yt:"https://www.youtube.com/results?search_query=The+Wolves+Bon+Iver",match:"Sitting inside something enormous and not running from it. Presence as its own answer."},
-  {song:"Breathe (2 AM)",artist:"Anna Nalick",yt:"https://www.youtube.com/results?search_query=Breathe+2AM+Anna+Nalick",match:"The overwhelm of 2am with the past pressing in. You can't fix it all tonight."},
-  {song:"Landslide",artist:"Fleetwood Mac",yt:"https://www.youtube.com/results?search_query=Landslide+Fleetwood+Mac",match:"The terror and beauty of having outgrown who you were. The past as a place you can acknowledge without living in."},
-  {song:"Phir Se Ud Chala",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Phir+Se+Ud+Chala+Rockstar",match:"The moment the weight of the past finally lifts and you remember you can move again. Not forgetting — releasing."},
-  {song:"Dil Dhadakne Do Title Track",artist:"DDD",yt:"https://www.youtube.com/results?search_query=Dil+Dhadakne+Do+Title+Track",match:"The radical act of releasing the weight of who you were supposed to be. Permission to exist outside of what was expected."},
-  {song:"White Flag",artist:"Joseph",yt:"https://www.youtube.com/results?search_query=White+Flag+Joseph",match:"The radical act of stopping when everything says keep going. Surrender as a form of strength."},
-  {song:"Running with the Wolves",artist:"Aurora",yt:"https://www.youtube.com/results?search_query=Running+with+the+Wolves+Aurora",match:"The wildness underneath the professional surface. The call of something older than the need to control."},
-  {song:"Lost in the Light",artist:"Bahamas",yt:"https://www.youtube.com/results?search_query=Lost+in+the+Light+Bahamas",match:"The lightness that comes from releasing the grip. Trust what happens when you stop holding everything."},
-  {song:"Numb",artist:"Linkin Park",yt:"https://www.youtube.com/results?search_query=Numb+Linkin+Park",match:"The exhaustion of someone who has been controlled — by expectations, by plans, by the need to manage every outcome."},
-  {song:"Let Her Go",artist:"Passenger",yt:"https://www.youtube.com/results?search_query=Let+Her+Go+Passenger",match:"The realisation that comes only after releasing control. You only know what you had when you stop gripping it."},
-  {song:"Unwritten",artist:"Natasha Bedingfield",yt:"https://www.youtube.com/results?search_query=Unwritten+Natasha+Bedingfield",match:"The page is still blank. The story isn't written yet. Releasing the need to know how it ends."},
-  {song:"Dum Maro Dum",artist:"Hare Rama Hare Krishna",yt:"https://www.youtube.com/results?search_query=Dum+Maro+Dum+Asha+Bhosle",match:"The release of the grip — the liberation meaning. The person who has been controlling everything finally lets go."}
+  {song:"River",artist:"Leon Bridges",yt:"https://www.youtube.com/results?search_query=River+Leon+Bridges",match:"Forgiveness without a finish line. The warmth of being seen exactly as you are and knowing that is enough."},
+  {song:"Flaws",artist:"Bastille",yt:"https://www.youtube.com/results?search_query=Flaws+Bastille",match:"Seeing your own patterns clearly and choosing to keep going anyway. Honest and forward-moving."},
+  {song:"Do I Wanna Know?",artist:"Arctic Monkeys",yt:"https://www.youtube.com/results?search_query=Do+I+Wanna+Know+Arctic+Monkeys",match:"The confident slow burn of someone who knows their own mind. Grounded and unhurried."},
+  {song:"Fix You",artist:"Coldplay",yt:"https://www.youtube.com/results?search_query=Fix+You+Coldplay",match:"The tenderness of being seen in failure — and rising anyway. Builds from quiet to full."},
+  {song:"Lost in the Light",artist:"Bahamas",yt:"https://www.youtube.com/results?search_query=Lost+in+the+Light+Bahamas",match:"The lightness that comes when you stop measuring yourself. Warm, unhurried, free."},
+  {song:"Iktara",artist:"Wake Up Sid",yt:"https://www.youtube.com/results?search_query=Iktara+Wake+Up+Sid",match:"The quiet confidence of someone who knows their own voice. Searching and beautiful."},
+  {song:"Masakali",artist:"Delhi-6",yt:"https://www.youtube.com/results?search_query=Masakali+Delhi+6",match:"The freedom of someone who has stopped performing and started living. Joyful and free."},
+  {song:"The Village",artist:"Wrabel",yt:"https://www.youtube.com/results?search_query=The+Village+Wrabel",match:"The strength of being fully yourself. A song about belonging on your own terms."},
+  {song:"Gravity",artist:"John Mayer",yt:"https://www.youtube.com/results?search_query=Gravity+John+Mayer",match:"The grounded power of someone who knows their own centre. Warm and resolute."},
+  {song:"A Change is Gonna Come",artist:"Sam Cooke",yt:"https://www.youtube.com/results?search_query=A+Change+is+Gonna+Come+Sam+Cooke",match:"The unshakeable faith that something better is coming. Soul and conviction."},
+  {song:"HUMBLE.",artist:"Kendrick Lamar",yt:"https://www.youtube.com/results?search_query=HUMBLE+Kendrick+Lamar",match:"The power of knowing your own worth without needing to prove it. Commanding and clear."},
+  {song:"People Pleaser",artist:"Zara Larsson",yt:"https://www.youtube.com/results?search_query=People+Pleaser+Zara+Larsson",match:"The liberation of finally stopping the shapeshifting. Upbeat, direct, freeing."},
+  {song:"Kabira",artist:"Yeh Jawaani Hai Deewani",yt:"https://www.youtube.com/results?search_query=Kabira+YJHD",match:"The warmth of being truly known. A song about presence over performance."},
+  {song:"Khairiyat",artist:"Chhichhore",yt:"https://www.youtube.com/results?search_query=Khairiyat+Chhichhore",match:"The generosity of someone who genuinely cares. Tender and real."},
+  {song:"Shake It Out",artist:"Florence + The Machine",yt:"https://www.youtube.com/results?search_query=Shake+It+Out+Florence+Machine",match:"The release that comes when you finally stop running. Big, bright, cathartic."},
+  {song:"Glory and Gore",artist:"Lorde",yt:"https://www.youtube.com/results?search_query=Glory+and+Gore+Lorde",match:"The ferocity of someone done performing smallness. Fierce and unapologetic."},
+  {song:"Eye of the Tiger",artist:"Survivor",yt:"https://www.youtube.com/results?search_query=Eye+of+the+Tiger+Survivor",match:"Pure forward momentum. For when the body needs to remember what it's capable of."},
+  {song:"Dog Days Are Over",artist:"Florence + The Machine",yt:"https://www.youtube.com/results?search_query=Dog+Days+Are+Over+Florence+Machine",match:"The electricity of a life finally moving forward. Joyful and unstoppable."},
+  {song:"Zinda",artist:"Bhaag Milkha Bhaag",yt:"https://www.youtube.com/results?search_query=Zinda+Bhaag+Milkha+Bhaag",match:"The anthem of someone who runs because they are fully alive. Relentless and triumphant."},
+  {song:"Sadda Haq",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Sadda+Haq+Rockstar",match:"The demand to exist on your own terms. Raw, powerful, non-negotiable."},
+  {song:"Power",artist:"Kanye West",yt:"https://www.youtube.com/results?search_query=Power+Kanye+West",match:"The commanding energy of someone who owns their space. Massive and assured."},
+  {song:"Kun Faya Kun",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Kun+Faya+Kun+Rockstar",match:"The peace of having nothing left to prove. Surrender as the most powerful thing."},
+  {song:"Main Kya Hoon",artist:"Love Aaj Kal",yt:"https://www.youtube.com/results?search_query=Main+Kya+Hoon+Love+Aaj+Kal",match:"The honest question of someone finding themselves beyond the performance. Searching and alive."},
+  {song:"Royals",artist:"Lorde",yt:"https://www.youtube.com/results?search_query=Royals+Lorde",match:"The cool confidence of someone who has stopped wanting what they were told to want. Assured and calm."},
+  {song:"I Will Survive",artist:"Gloria Gaynor",yt:"https://www.youtube.com/results?search_query=I+Will+Survive+Gloria+Gaynor",match:"The moment doubt loses. Pure defiance set to the most joyful bassline ever written."},
+  {song:"Nina Cried Power",artist:"Hozier",yt:"https://www.youtube.com/results?search_query=Nina+Cried+Power+Hozier",match:"The power of those who built something meaningful. You are part of that lineage."},
+  {song:"Stubborn Love",artist:"The Lumineers",yt:"https://www.youtube.com/results?search_query=Stubborn+Love+Lumineers",match:"The stubborn, joyful insistence on keeping going. Warm and defiant."},
+  {song:"Blackbird",artist:"The Beatles",yt:"https://www.youtube.com/results?search_query=Blackbird+Beatles",match:"The permission to rise — not from triumph but from readiness. You've always been ready."},
+  {song:"Kar Har Maidaan Fateh",artist:"Sanju",yt:"https://www.youtube.com/results?search_query=Kar+Har+Maidaan+Fateh+Sanju",match:"Redemption as momentum. Every field can be won. This one included."},
+  {song:"Rise Up",artist:"Andra Day",yt:"https://www.youtube.com/results?search_query=Rise+Up+Andra+Day",match:"The slow, earned power of someone choosing to get up. Builds to something massive."},
+  {song:"Try",artist:"P!nk",yt:"https://www.youtube.com/results?search_query=Try+Pink",match:"The courage of someone who keeps going after visible failure. Defiant and driving."},
+  {song:"Phir Se Ud Chala",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Phir+Se+Ud+Chala+Rockstar",match:"The moment the weight lifts and you remember you were always meant to fly. Soaring."},
+  {song:"Dil Dhadakne Do Title Track",artist:"DDD",yt:"https://www.youtube.com/results?search_query=Dil+Dhadakne+Do+Title+Track",match:"Permission to exist outside of what was expected. Warm, liberating, alive."},
+  {song:"Running with the Wolves",artist:"Aurora",yt:"https://www.youtube.com/results?search_query=Running+with+the+Wolves+Aurora",match:"The wildness underneath the professional surface. The part of you that was never tamed."},
+  {song:"Numb",artist:"Linkin Park",yt:"https://www.youtube.com/results?search_query=Numb+Linkin+Park",match:"The moment you stop conforming to everyone else's expectations. Rock-solid and releasing."},
+  {song:"Unwritten",artist:"Natasha Bedingfield",yt:"https://www.youtube.com/results?search_query=Unwritten+Natasha+Bedingfield",match:"The page is blank. The story is still being written. Release the need to know the ending."},
+  {song:"Champion",artist:"Kanye West ft. Santogold",yt:"https://www.youtube.com/results?search_query=Champion+Kanye+West+Santogold",match:"The quiet confidence of someone who has already decided they will win. Warm and assured."},
+  {song:"Stronger",artist:"Kanye West",yt:"https://www.youtube.com/results?search_query=Stronger+Kanye+West",match:"What doesn't break you makes you. The energy of transformation in real time."},
+  {song:"Hall of Fame",artist:"The Script ft. will.i.am",yt:"https://www.youtube.com/results?search_query=Hall+of+Fame+The+Script",match:"The anthem of someone who decided they would be remembered. Uplifting and driving."},
+  {song:"Roar",artist:"Katy Perry",yt:"https://www.youtube.com/results?search_query=Roar+Katy+Perry",match:"Finding your voice after staying quiet for too long. Bright, clear, unstoppable."},
+  {song:"Brave",artist:"Sara Bareilles",yt:"https://www.youtube.com/results?search_query=Brave+Sara+Bareilles",match:"The courage to say what you actually mean. Joyful, grounded, free."},
+  {song:"Born This Way",artist:"Lady Gaga",yt:"https://www.youtube.com/results?search_query=Born+This+Way+Lady+Gaga",match:"The radical acceptance of who you actually are. Nothing to hide, nothing to prove."},
+  {song:"This Is Me",artist:"The Greatest Showman",yt:"https://www.youtube.com/results?search_query=This+Is+Me+Greatest+Showman",match:"The moment of choosing to be seen. Powerful, marching, irreversible."},
+  {song:"Unstoppable",artist:"Sia",yt:"https://www.youtube.com/results?search_query=Unstoppable+Sia",match:"The realisation that you were never as stoppable as you thought. Surging and certain."},
+  {song:"Good as Hell",artist:"Lizzo",yt:"https://www.youtube.com/results?search_query=Good+as+Hell+Lizzo",match:"The permission to feel genuinely, completely good. No conditions. Just good."},
+  {song:"Chak De India",artist:"Sukhwinder Singh",yt:"https://www.youtube.com/results?search_query=Chak+De+India+Sukhwinder+Singh",match:"The collective roar of people who were told they couldn't. They did. You can too."},
+  {song:"Jai Ho",artist:"AR Rahman",yt:"https://www.youtube.com/results?search_query=Jai+Ho+AR+Rahman+Slumdog",match:"Victory earned through perseverance. The feeling of crossing the finish line you doubted you'd reach."},
+  {song:"Rang De Basanti",artist:"AR Rahman",yt:"https://www.youtube.com/results?search_query=Rang+De+Basanti+AR+Rahman",match:"The awakening of someone who finally sees what they're capable of. Alive and defiant."},
+  {song:"Tum Ho",artist:"Rockstar",yt:"https://www.youtube.com/results?search_query=Tum+Ho+Rockstar",match:"The warmth of knowing someone fully sees you. Being known is the most liberating thing."},
+  {song:"Jab Tak Hai Jaan",artist:"AR Rahman",yt:"https://www.youtube.com/results?search_query=Jab+Tak+Hai+Jaan+AR+Rahman",match:"The energy of someone who keeps going as long as there is breath. Relentless and warm."},
+  {song:"Dil Se Re",artist:"AR Rahman",yt:"https://www.youtube.com/results?search_query=Dil+Se+Re+AR+Rahman",match:"The full-body release of someone finally led by their heart. Passionate and free."},
+  {song:"Hawa Hawa",artist:"Coke Studio",yt:"https://www.youtube.com/results?search_query=Hawa+Hawa+Coke+Studio",match:"The lightness of someone who has let something go. Breezy, free, and completely alive."}
 ];
 
 const BELIEFS = {
-  b1:{label:"I am not enough",noise:"The voice that says it's not enough",signal:"You already are",shadow:"Never satisfied, can't appreciate what's here",songs:["River","Holocene","Flaws"],release:"This song knows the exhaustion of performing worthiness. It doesn't tell you to try harder. It offers something rarer — forgiveness without a finish line."},
-  b2:{label:"I belong only when I'm useful",noise:"Only matters when being needed",signal:"You matter when you stop too",shadow:"Loses self, code-switches until there's no original left",songs:["Strange Fruit","The Village","Gravity"],release:"This song holds what it costs to give endlessly while quietly disappearing. It doesn't ask you to stop caring — it asks you to notice the price."},
-  b3:{label:"I'm only valued when I produce",noise:"Rest feels like falling behind",signal:"Stillness is not the enemy",shadow:"Can't rest, every achievement is relief not joy",songs:["Shake It Out","When the Party's Over","Fake Plastic Trees"],release:"This song is for the one who can't stop moving because stopping feels like ceasing to exist. It doesn't celebrate the hustle. It names the cost."},
-  b4:{label:"If they see the real me, it's over",noise:"Can't let them see the real version",signal:"The real version is the strong one",shadow:"Can't be vulnerable, paralysis by analysis under pressure",songs:["Liability","The Night We Met","Motion Picture Soundtrack"],release:"This song is about the loneliness of self-editing. Of becoming so careful about what you show that you lose track of what's actually there."},
+  b1:{label:"I am not enough",noise:"The voice that says it's not enough",signal:"You already are",shadow:"Never satisfied, can't appreciate what's here",songs:["River","River","Flaws"],release:"This song knows the exhaustion of performing worthiness. It doesn't tell you to try harder. It offers something rarer — forgiveness without a finish line."},
+  b2:{label:"I belong only when I'm useful",noise:"Only matters when being needed",signal:"You matter when you stop too",shadow:"Loses self, code-switches until there's no original left",songs:["A Change is Gonna Come","The Village","Gravity"],release:"This song holds what it costs to give endlessly while quietly disappearing. It doesn't ask you to stop caring — it asks you to notice the price."},
+  b3:{label:"I'm only valued when I produce",noise:"Rest feels like falling behind",signal:"Stillness is not the enemy",shadow:"Can't rest, every achievement is relief not joy",songs:["Shake It Out","Shake It Out","Dog Days Are Over"],release:"This song is for the one who can't stop moving because stopping feels like ceasing to exist. It doesn't celebrate the hustle. It names the cost."},
+  b4:{label:"If they see the real me, it's over",noise:"Can't let them see the real version",signal:"The real version is the strong one",shadow:"Can't be vulnerable, paralysis by analysis under pressure",songs:["Roar","A Change is Gonna Come","Eye of the Tiger"],release:"This song is about the loneliness of self-editing. Of becoming so careful about what you show that you lose track of what's actually there."},
   b5:{label:"If I fail, it proves who I am",noise:"One failure away from being found out",signal:"Failing forward is still forward",shadow:"Can't tolerate failure, one mistake collapses identity",songs:["I Will Survive","Stubborn Love","Nina Cried Power"],release:"This song is for the moment doubt finally loses. Not because the fear went away — because you moved anyway. The defiance that only comes from having genuinely been afraid."},
-  b6:{label:"My past defines me",noise:"Still carrying what already happened",signal:"The past is data, not a sentence",shadow:"Can't release the past, replays endlessly, every decision weighted",songs:["The Wolves (Act I and II)","Breathe (2 AM)","Landslide"],release:"This song doesn't ask you to forget. It asks you to stop treating the past as a verdict. To sit inside the weight of it without letting it be the whole story."},
-  b7:{label:"If I can't control it, I can't survive it",noise:"Can't move until it's certain",signal:"Clarity comes from moving, not waiting",shadow:"Analysis paralysis, can't act under uncertainty, catastrophises",songs:["Dog Days Are Over","Lost in the Light","White Flag"],release:"This song is the sound of the grip finally releasing. Not because everything is safe — because you discovered you could survive not knowing."}
+  b6:{label:"My past defines me",noise:"Still carrying what already happened",signal:"The past is data, not a sentence",shadow:"Can't release the past, replays endlessly, every decision weighted",songs:["Phir Se Ud Chala","Dog Days Are Over","A Change is Gonna Come"],release:"This song doesn't ask you to forget. It asks you to stop treating the past as a verdict. To sit inside the weight of it without letting it be the whole story."},
+  b7:{label:"If I can't control it, I can't survive it",noise:"Can't move until it's certain",signal:"Clarity comes from moving, not waiting",shadow:"Analysis paralysis, can't act under uncertainty, catastrophises",songs:["Dog Days Are Over","Lost in the Light","Running with the Wolves"],release:"This song is the sound of the grip finally releasing. Not because everything is safe — because you discovered you could survive not knowing."}
 };
 
 const QUESTIONS = [
@@ -534,26 +547,26 @@ const QUESTIONS = [
     scenario:"The Room",
     text:"You're in a meeting — investors, senior leaders, or a new network. People who grew up with more. You're the one who got here differently. What runs underneath:",
     opts:[
-      {l:"A",t:"I have to be sharper, more prepared, more impressive just to be taken seriously.",v:"b1"},
-      {l:"B",t:"I'm scanning for where I can add value so I earn my place here.",v:"b2"},
-      {l:"C",t:"I'll let my work speak. That's the only currency I actually have.",v:"b3"},
-      {l:"D",t:"If they knew my actual background, the dynamic in this room would change.",v:"b4"},
-      {l:"E",t:"People like them have always had a head start. That's just the reality.",v:"b6"},
-      {l:"F",t:"I'm reading every person here before I say anything that matters.",v:"b7"},
-      {l:"G",t:"One wrong move and I lose the credibility it took me years to build.",v:"b5"}
+      {l:"A",t:"I know I belong here — I just have to work a little harder to show it.",v:"b1"},
+      {l:"B",t:"I'm looking for where I can genuinely contribute. That's how I show up.",v:"b2"},
+      {l:"C",t:"I'll let my work do the talking. That's always been my strongest move.",v:"b3"},
+      {l:"D",t:"I'm aware that my path here looked different — and that's actually a strength.",v:"b4"},
+      {l:"E",t:"Everyone in this room took a different road to get here. Mine just had different terrain.",v:"b6"},
+      {l:"F",t:"I like to read the room first before I speak. It's how I make my words count.",v:"b7"},
+      {l:"G",t:"I've built something real to stand on. I just need to remind myself of that.",v:"b5"}
     ]
   },
   {
     scenario:"The Guilt Trip",
     text:"A close friend or sibling — same background as you — is struggling. You're doing well by comparison. What sits with you that you don't say:",
     opts:[
-      {l:"A",t:"I don't feel like I've done enough to deserve the gap between us.",v:"b1"},
-      {l:"B",t:"I feel responsible. Like it's on me to fix it, or at least to be there.",v:"b2"},
-      {l:"C",t:"I throw myself into work partly so I don't have to sit with this feeling.",v:"b3"},
-      {l:"D",t:"I don't want them to see how different things have become between us.",v:"b4"},
-      {l:"E",t:"I think about the luck and timing involved in why things went the way they did.",v:"b6"},
-      {l:"F",t:"I'm already thinking through every way I could help without making things worse.",v:"b7"},
-      {l:"G",t:"Some part of me wonders if I only got here because of circumstances, not because I earned it.",v:"b5"}
+      {l:"A",t:"I want to do more for them. I feel like I always could be doing more.",v:"b1"},
+      {l:"B",t:"I care deeply — I want to be there for them in any way I can.",v:"b2"},
+      {l:"C",t:"I channel this energy into working harder. It keeps me focused on what I can control.",v:"b3"},
+      {l:"D",t:"I'm protective of the relationship. I don't want distance to grow between us.",v:"b4"},
+      {l:"E",t:"I think a lot about how circumstances shape where we end up. Timing is everything.",v:"b6"},
+      {l:"F",t:"I'm already turning over how I can support them — practically, thoughtfully.",v:"b7"},
+      {l:"G",t:"I want to make sure I've genuinely earned what I have, not just been lucky.",v:"b5"}
     ]
   },
   {
@@ -735,21 +748,17 @@ function submitEmail(){
     belief_label: result.belief.label,
     noise: result.belief.noise,
     signal: result.belief.signal,
-    anthem: result.song.song+' by '+result.song.artist
+    anthem: (result.song && result.song.song) ? result.song.song+' — '+result.song.artist : 'Not assigned'
   };
 
+  // Webhook to Make.com
   fetch('https://hook.eu1.make.com/5pgy4bi4wtpkstnp4lulvwidqhv3ax88',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
   })
-  .then(function(r){
-    console.log('Webhook status:', r.status, r.statusText);
-    return r.text();
-  })
-  .then(function(t){ console.log('Webhook response:', t); })
-  .catch(function(e){ console.error('Webhook error:', e); });
-
+  .then(function(r){ console.log('Webhook:', r.status); })
+  .catch(function(e){ console.warn('Webhook error:', e); });
   show('loading');
   runLoading(result);
 }
@@ -792,7 +801,7 @@ function computeResult(){
     }
   }
   const belief=BELIEFS[beliefKey];
-  const song=pickSong(beliefKey);
+  const song=pickSong(beliefKey,answers);
   return {beliefKey,belief,song,counts,answers};
 }
 
@@ -809,62 +818,62 @@ function pickSong(beliefKey, answers){
   const poolKey = beliefKey + '_' + ageBand + '_' + gender;
 
   const DEMO_POOL = {
-    "b1_18-25_Female":["River","Flaws","Outro","Smother","Do I Wanna Know?"],
-    "b1_18-25_Male":  ["River","Flaws","Do I Wanna Know?","Outro","Smother"],
-    "b1_26-35_Female":["River","Holocene","Flaws","Lua","Outro"],
-    "b1_26-35_Male":  ["River","Holocene","Flaws","Lua","Do I Wanna Know?"],
-    "b1_36-45_Female":["River","Holocene","Lua","Lost in the Light","Fix You"],
-    "b1_36-45_Male":  ["River","Holocene","Lua","Lost in the Light","Fix You"],
-    "b1_45+_Female":  ["River","Lost in the Light","Fix You","Holocene","Flaws"],
-    "b1_45+_Male":    ["River","Lost in the Light","Fix You","Holocene","Flaws"],
-    "b2_18-25_Female":["The Village","People Pleaser","HUMBLE.","Strange Fruit","Smother"],
-    "b2_18-25_Male":  ["The Village","HUMBLE.","People Pleaser","Gravity","How Soon is Now?"],
-    "b2_26-35_Female":["The Village","Smother","People Pleaser","Kabira","Khairiyat"],
+    "b1_18-25_Female":["River","Flaws","Fix You","Brave","Good as Hell"],
+    "b1_18-25_Male":  ["River","Flaws","Do I Wanna Know?","Fix You","Champion"],
+    "b1_26-35_Female":["River","Fix You","Lost in the Light","Brave","A Change is Gonna Come"],
+    "b1_26-35_Male":  ["River","Fix You","Lost in the Light","Do I Wanna Know?","A Change is Gonna Come"],
+    "b1_36-45_Female":["River","Fix You","Lost in the Light","A Change is Gonna Come","Iktara"],
+    "b1_36-45_Male":  ["River","Fix You","Lost in the Light","A Change is Gonna Come","Masakali"],
+    "b1_45+_Female":  ["River","Fix You","A Change is Gonna Come","Lost in the Light","Blackbird"],
+    "b1_45+_Male":    ["River","Fix You","A Change is Gonna Come","Lost in the Light","Blackbird"],
+    "b2_18-25_Female":["The Village","People Pleaser","Roar","Good as Hell","Brave"],
+    "b2_18-25_Male":  ["The Village","HUMBLE.","Gravity","A Change is Gonna Come","Champion"],
+    "b2_26-35_Female":["The Village","People Pleaser","Kabira","Khairiyat","A Change is Gonna Come"],
     "b2_26-35_Male":  ["The Village","Gravity","HUMBLE.","Kabira","Khairiyat"],
-    "b2_36-45_Female":["Strange Fruit","Smother","A Change is Gonna Come","Kabira","Khairiyat"],
-    "b2_36-45_Male":  ["Gravity","How Soon is Now?","A Change is Gonna Come","Kabira","Khairiyat"],
-    "b2_45+_Female":  ["Strange Fruit","A Change is Gonna Come","How Soon is Now?","The Village","Smother"],
-    "b2_45+_Male":    ["How Soon is Now?","A Change is Gonna Come","Strange Fruit","The Village","Gravity"],
-    "b3_18-25_Female":["Shake It Out","When the Party's Over","Glory and Gore","Dog Days Are Over","Sadda Haq"],
-    "b3_18-25_Male":  ["Sadda Haq","Shake It Out","When the Party's Over","Glory and Gore","Dog Days Are Over"],
-    "b3_26-35_Female":["Shake It Out","Fake Plastic Trees","When the Party's Over","Skinny Love","Glory and Gore"],
-    "b3_26-35_Male":  ["Fake Plastic Trees","Skinny Love","Eye of the Tiger","Zinda","Sadda Haq"],
-    "b3_36-45_Female":["Fake Plastic Trees","Skinny Love","Motion Picture Soundtrack","Work Song","Eye of the Tiger"],
-    "b3_36-45_Male":  ["Fake Plastic Trees","Skinny Love","Eye of the Tiger","Motion Picture Soundtrack","Zinda"],
-    "b3_45+_Female":  ["Motion Picture Soundtrack","Eye of the Tiger","Shake It Out","Fake Plastic Trees","When the Party's Over"],
-    "b3_45+_Male":    ["Eye of the Tiger","Motion Picture Soundtrack","Fake Plastic Trees","Skinny Love","Zinda"],
-    "b4_18-25_Female":["Liability","Royals","HUMBLE.","Do I Wanna Know?","Kun Faya Kun"],
-    "b4_18-25_Male":  ["HUMBLE.","Do I Wanna Know?","Kun Faya Kun","Liability","Royals"],
-    "b4_26-35_Female":["Liability","The Night We Met","Lua","Holocene","Main Kya Hoon"],
-    "b4_26-35_Male":  ["The Night We Met","HUMBLE.","Power","Do I Wanna Know?","Lua"],
-    "b4_36-45_Female":["The Night We Met","Motion Picture Soundtrack","How Soon is Now?","Lua","Holocene"],
-    "b4_36-45_Male":  ["The Night We Met","Motion Picture Soundtrack","Power","How Soon is Now?","Lua"],
-    "b4_45+_Female":  ["Motion Picture Soundtrack","How Soon is Now?","Holocene","Liability","The Night We Met"],
-    "b4_45+_Male":    ["Motion Picture Soundtrack","How Soon is Now?","Holocene","The Night We Met","HUMBLE."],
-    "b5_18-25_Female":["I Will Survive","Glory and Gore","Flaws","Try","Nina Cried Power"],
-    "b5_18-25_Male":  ["Flaws","I Will Survive","Glory and Gore","Try","Nina Cried Power"],
-    "b5_26-35_Female":["I Will Survive","Nina Cried Power","Stubborn Love","Glory and Gore","Flaws"],
-    "b5_26-35_Male":  ["Nina Cried Power","Stubborn Love","Eye of the Tiger","Flaws","Zinda"],
-    "b5_36-45_Female":["I Will Survive","Nina Cried Power","Stubborn Love","A Change is Gonna Come","Blackbird"],
-    "b5_36-45_Male":  ["Nina Cried Power","Stubborn Love","Eye of the Tiger","A Change is Gonna Come","Blackbird"],
+    "b2_36-45_Female":["A Change is Gonna Come","Kabira","The Village","Khairiyat","Dil Se Re"],
+    "b2_36-45_Male":  ["Gravity","A Change is Gonna Come","Kabira","HUMBLE.","Khairiyat"],
+    "b2_45+_Female":  ["A Change is Gonna Come","The Village","Kabira","Dil Se Re","Hawa Hawa"],
+    "b2_45+_Male":    ["A Change is Gonna Come","The Village","Gravity","HUMBLE.","Kabira"],
+    "b3_18-25_Female":["Shake It Out","Dog Days Are Over","Glory and Gore","Roar","Unstoppable"],
+    "b3_18-25_Male":  ["Sadda Haq","Eye of the Tiger","Dog Days Are Over","Stronger","Zinda"],
+    "b3_26-35_Female":["Shake It Out","Dog Days Are Over","Glory and Gore","Zinda","Unstoppable"],
+    "b3_26-35_Male":  ["Eye of the Tiger","Zinda","Sadda Haq","Stronger","Dog Days Are Over"],
+    "b3_36-45_Female":["Shake It Out","Dog Days Are Over","Eye of the Tiger","A Change is Gonna Come","Dil Se Re"],
+    "b3_36-45_Male":  ["Eye of the Tiger","Zinda","Sadda Haq","Stronger","Rang De Basanti"],
+    "b3_45+_Female":  ["Eye of the Tiger","Shake It Out","Dog Days Are Over","A Change is Gonna Come","Jab Tak Hai Jaan"],
+    "b3_45+_Male":    ["Eye of the Tiger","Zinda","Kar Har Maidaan Fateh","Chak De India","Rang De Basanti"],
+    "b4_18-25_Female":["Royals","Brave","Born This Way","Roar","This Is Me"],
+    "b4_18-25_Male":  ["HUMBLE.","Do I Wanna Know?","Kun Faya Kun","Power","Numb"],
+    "b4_26-35_Female":["Main Kya Hoon","Tum Ho","Kun Faya Kun","Brave","This Is Me"],
+    "b4_26-35_Male":  ["HUMBLE.","Power","Do I Wanna Know?","Kun Faya Kun","Main Kya Hoon"],
+    "b4_36-45_Female":["Main Kya Hoon","Tum Ho","Kun Faya Kun","A Change is Gonna Come","Dil Se Re"],
+    "b4_36-45_Male":  ["Power","HUMBLE.","Kun Faya Kun","Numb","Rang De Basanti"],
+    "b4_45+_Female":  ["A Change is Gonna Come","Tum Ho","Kun Faya Kun","Dil Se Re","Hawa Hawa"],
+    "b4_45+_Male":    ["HUMBLE.","Kun Faya Kun","Power","A Change is Gonna Come","Chak De India"],
+    "b5_18-25_Female":["I Will Survive","Glory and Gore","Try","Roar","Unstoppable"],
+    "b5_18-25_Male":  ["Eye of the Tiger","Nina Cried Power","I Will Survive","Hall of Fame","Stronger"],
+    "b5_26-35_Female":["I Will Survive","Nina Cried Power","Rise Up","Try","Unstoppable"],
+    "b5_26-35_Male":  ["Nina Cried Power","Eye of the Tiger","Kar Har Maidaan Fateh","Zinda","Hall of Fame"],
+    "b5_36-45_Female":["I Will Survive","Nina Cried Power","Rise Up","A Change is Gonna Come","Blackbird"],
+    "b5_36-45_Male":  ["Nina Cried Power","Eye of the Tiger","Kar Har Maidaan Fateh","A Change is Gonna Come","Blackbird"],
     "b5_45+_Female":  ["I Will Survive","Stubborn Love","A Change is Gonna Come","Blackbird","Kar Har Maidaan Fateh"],
-    "b5_45+_Male":    ["Stubborn Love","A Change is Gonna Come","Blackbird","Kar Har Maidaan Fateh","I Will Survive"],
-    "b6_18-25_Female":["Breathe (2 AM)","Dog Days Are Over","Shake It Out","The Wolves (Act I and II)","Landslide"],
-    "b6_18-25_Male":  ["Breathe (2 AM)","Dog Days Are Over","Shake It Out","The Wolves (Act I and II)","The Night We Met"],
-    "b6_26-35_Female":["The Wolves (Act I and II)","Breathe (2 AM)","The Night We Met","Dog Days Are Over","Skinny Love"],
-    "b6_26-35_Male":  ["The Wolves (Act I and II)","The Night We Met","Skinny Love","Nina Cried Power","Phir Se Ud Chala"],
-    "b6_36-45_Female":["The Wolves (Act I and II)","Landslide","The Night We Met","Skinny Love","A Change is Gonna Come"],
-    "b6_36-45_Male":  ["The Wolves (Act I and II)","The Night We Met","Skinny Love","A Change is Gonna Come","Nina Cried Power"],
-    "b6_45+_Female":  ["Landslide","A Change is Gonna Come","Phir Se Ud Chala","The Wolves (Act I and II)","Breathe (2 AM)"],
-    "b6_45+_Male":    ["A Change is Gonna Come","Phir Se Ud Chala","Landslide","The Wolves (Act I and II)","The Night We Met"],
-    "b7_18-25_Female":["Dog Days Are Over","Running with the Wolves","Breathe (2 AM)","Unwritten","White Flag"],
-    "b7_18-25_Male":  ["Dog Days Are Over","Running with the Wolves","Breathe (2 AM)","Unwritten","Eye of the Tiger"],
-    "b7_26-35_Female":["Dog Days Are Over","White Flag","Running with the Wolves","Breathe (2 AM)","Unwritten"],
-    "b7_26-35_Male":  ["Eye of the Tiger","Numb","Let Her Go","Dog Days Are Over","White Flag"],
-    "b7_36-45_Female":["White Flag","Lost in the Light","The Wolves (Act I and II)","Holocene","Landslide"],
-    "b7_36-45_Male":  ["Eye of the Tiger","Lost in the Light","The Wolves (Act I and II)","Holocene","Dum Maro Dum"],
-    "b7_45+_Female":  ["Lost in the Light","The Wolves (Act I and II)","Holocene","Landslide","Dum Maro Dum"],
-    "b7_45+_Male":    ["Lost in the Light","The Wolves (Act I and II)","Holocene","Dum Maro Dum","Landslide"]
+    "b5_45+_Male":    ["Stubborn Love","A Change is Gonna Come","Blackbird","Kar Har Maidaan Fateh","Chak De India"],
+    "b6_18-25_Female":["Dog Days Are Over","Shake It Out","Phir Se Ud Chala","Roar","Hawa Hawa"],
+    "b6_18-25_Male":  ["Dog Days Are Over","Phir Se Ud Chala","Numb","Eye of the Tiger","Rang De Basanti"],
+    "b6_26-35_Female":["Phir Se Ud Chala","Dog Days Are Over","Dil Dhadakne Do Title Track","A Change is Gonna Come","Hawa Hawa"],
+    "b6_26-35_Male":  ["Phir Se Ud Chala","Dog Days Are Over","Numb","A Change is Gonna Come","Rang De Basanti"],
+    "b6_36-45_Female":["A Change is Gonna Come","Phir Se Ud Chala","Dil Dhadakne Do Title Track","Blackbird","Dil Se Re"],
+    "b6_36-45_Male":  ["A Change is Gonna Come","Phir Se Ud Chala","Numb","Blackbird","Chak De India"],
+    "b6_45+_Female":  ["A Change is Gonna Come","Blackbird","Phir Se Ud Chala","Dil Se Re","Jab Tak Hai Jaan"],
+    "b6_45+_Male":    ["A Change is Gonna Come","Blackbird","Phir Se Ud Chala","Chak De India","Jai Ho"],
+    "b7_18-25_Female":["Dog Days Are Over","Running with the Wolves","Unwritten","Roar","Hawa Hawa"],
+    "b7_18-25_Male":  ["Dog Days Are Over","Running with the Wolves","Eye of the Tiger","Numb","Stronger"],
+    "b7_26-35_Female":["Dog Days Are Over","Running with the Wolves","Unwritten","Phir Se Ud Chala","Hawa Hawa"],
+    "b7_26-35_Male":  ["Eye of the Tiger","Numb","Dog Days Are Over","Running with the Wolves","Stronger"],
+    "b7_36-45_Female":["Running with the Wolves","Dog Days Are Over","A Change is Gonna Come","Phir Se Ud Chala","Dil Se Re"],
+    "b7_36-45_Male":  ["Eye of the Tiger","Dog Days Are Over","A Change is Gonna Come","Numb","Rang De Basanti"],
+    "b7_45+_Female":  ["A Change is Gonna Come","Running with the Wolves","Phir Se Ud Chala","Blackbird","Jab Tak Hai Jaan"],
+    "b7_45+_Male":    ["A Change is Gonna Come","Eye of the Tiger","Phir Se Ud Chala","Blackbird","Chak De India"]
   };
 
   const pool = DEMO_POOL[poolKey] || DEMO_POOL[beliefKey+'_26-35_Male'] || [];
@@ -876,44 +885,6 @@ function pickSong(beliefKey, answers){
   const songTitle = pool[idx];
   return SONG_LIBRARY.find(s=>s.song===songTitle) || SONG_LIBRARY[0];
 }
-
-async function callAPI(result){
-  narrativeResult=null;
-  const clickSummary=result.answers.map((a,i)=>'Q'+(i+1)+' ('+QUESTIONS[i].scenario+'): '+a.text).join(' | ');
-
-  // Build full song library for API
-  const libraryContext=SONG_LIBRARY.map((s,i)=>'['+i+'] '+s.song+' by '+s.artist+': '+s.match).join(' || ');
-
-  const prompt='You are matching a high performer to their anthem. The person is '+ageBand+' years old, identifies as '+gender+'. Their primary limiting belief is: '+result.belief.label+'. Noise: '+result.belief.noise+'. Signal: '+result.belief.signal+'. Their 7 answers: '+clickSummary+'. SONG LIBRARY ('+SONG_LIBRARY.length+' songs): '+libraryContext+'. Pick the single best song for this specific person. Then write exactly 3 short paragraphs (150-180 words total). Para 1: what you see in them based on their answers, warm not clinical. Para 2: the belief underneath was a strength once, name what it cost to develop it. Para 3: why this specific song releases that belief, what to listen for. Respond in EXACTLY this format with no other text: SONG_INDEX: [number 0-'+(SONG_LIBRARY.length-1)+'] NARRATIVE: [3 paragraphs separated by double newline]. Rules: second person, no headers, pure prose, positive framing, no word journey.';
-
-  try{
-    const res=await fetch("/api/claude",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,messages:[{role:"user",content:prompt}]})
-    });
-    const d=await res.json();
-    const text=d?.content?.[0]?.text?.trim()||'';
-
-    const idxMatch=text.match(/SONG_INDEX:\s*(\d+)/);
-    const narrativeMatch=text.match(/NARRATIVE:\s*([\s\S]+)/);
-
-    if(idxMatch){
-      const idx=parseInt(idxMatch[1]);
-      if(idx>=0&&idx<SONG_LIBRARY.length){
-        narrativeResult={
-          song: SONG_LIBRARY[idx],
-          narrative: narrativeMatch?.[1]?.trim()||''
-        };
-      }
-    }
-    // fallback: use belief songs if parse fails but we got narrative
-    if(!narrativeResult&&narrativeMatch){
-      narrativeResult={song:pickSong(result.beliefKey,result.answers),narrative:narrativeMatch[1].trim()};
-    }
-  }catch(e){narrativeResult=null;}
-}
-
 function populateResult(result){
   const belief=result.belief;
   // Use API-selected song if available, otherwise logic fallback
@@ -930,6 +901,14 @@ function populateResult(result){
   const box=document.getElementById('narrative-box');
   const text=(narrativeResult&&narrativeResult.narrative)?narrativeResult.narrative:buildFallback({belief:belief,song:song,answers:result.answers});
   box.innerHTML='<div class="narrative-text">'+text.split('\n\n').filter(function(p){return p.trim();}).map(function(p){return '<p>'+p.trim()+'</p>';}).join('')+'</div>';
+}
+
+
+async function callAPI(result){
+  // API proxy not yet deployed — falls through to buildFallback automatically
+  // To enable: push api/claude.js to GitHub repo root, add ANTHROPIC_API_KEY to Vercel env vars
+  narrativeResult = null;
+  return;
 }
 
 function buildFallback(result){
